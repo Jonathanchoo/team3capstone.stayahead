@@ -10,7 +10,7 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <!--External css-->
     <link rel="stylesheet" href="styles/styles.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
 </head>
 
 <body>
@@ -46,33 +46,76 @@
     </section>
     <!--This is the middle part, insert your page content here-->
     <!--TODO add your section here-->
-
+    <!--landing page-->
     <header class="landing">
-        <div class="landingtextcontainer col-4 mx-2">
-            <h2>Plan ahead<br>Live with peace of mind</h2>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <div class="d-flex flex-row  w-100 justify-content-between">
-                <a class="btn btn-danger ">Create Account</a>
-                <a class="btn btn-outline-danger ">Learn more</a>
+        <div class="landingtextcontainer align-content-center col-5">
+            <div class="ms-md-5 m-2">
+                <h2 class="">Plan ahead<br>Live with peace of mind</h2>
+                <p class="d-md-flex d-none">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+            </div>
+            <div class="d-flex flex-md-row flex-column justify-content-evenly">
+                <a class="btn btn-primary justify-content-center m-2">Create Account</a>
+                <a class="btn btn-outline-danger bg-white justify-content-center m-2">Learn more</a>
             </div>
         </div>
-        <div class="landingimgcontainer col-8">
-            <img class="landingimg" src="assets/images/thinking.jpg" alt="thinking">
+        <div class="landingimgcontainer col-7">
+            <img class="landingimg img-fluid me-4" src="assets/images/thinking.jpg" alt="thinking">
         </div>
     </header>
+    <!--Content link-->
     <section>
-        <ul class="d-flex justify-content-evenly my-2 mx-5 list-unstyled">
-            <li>
-                <a>Scam Alerts</a>
+        <ul class="cards-container d-sm-flex align-content-center align-content-center ps-0 mx-sm-5">
+            <li class="landing-cards col-sm-4 pt-4 pb-4 flex-column">
+                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
+                    <button type="button" class="btn btn-secondary btn-lg mx-5">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                    </button>
+                    <div class="text-block">
+                        <a class="card-title">Scam Alerts</a>
+                        <p class="card-text">Latest scoop on what are they cooking up</p>
+                    </div>
+                </div>
             </li>
-            <li>
-                <a>Best Practices</a>
+            <li class="landing-cards col-sm-4 pt-4 pb-4">
+                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
+                    <button type="button" class="btn btn-secondary btn-lg mx-5">
+                        <i class="fa-solid fa-book-open"></i>
+                    </button>
+                    <div class="text-block">
+                        <a class="card-title">Best Practices</a>
+                        <p class="card-text">Prevention is better than Cure</p>
+                    </div>
+                </div>
             </li>
-            <li>
-                <a>Spot the Fraud</a>
+            <li class="landing-cards col-sm-4 pt-4 pb-4">
+                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
+                    <button type="button" class="btn btn-secondary btn-lg mx-5">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                    </button>
+                    <div class="text-block">
+                        <a class="card-title">Spot the Fraud</a>
+                        <p class="card-text">Training Ground!</p>
+                    </div>
+                </div>
             </li>
         </ul>
+        <!--Quote section-->
+        <div>
+            <figure class="text-center col-sm-5 m-sm-auto m-3">
+                <blockquote class="blockquote">
+                    <p>Most scams are absurd - so absurd that one wonders how anyone falls for them at all;
+                        yet if no one falls for them, how do the scammers make money?
+                    </p>
+                </blockquote>
+                <figcaption class="blockquote-footer">
+                   by <cite title="Source Title">James Veitch</cite>
+                </figcaption>
+            </figure>
+            <h2>
+            </h2>
+        </div>
     </section>
+
     <!--Footer start here-->
     <!--Footer nav links-->
     <footer>
@@ -100,7 +143,7 @@
         <!--Disclaimer section-->
         <div>
             <div class="disclaimer justify-content-center">
-                <h6>
+                <h6 class="text-center">
                     DISCLAIMERS: Information on this site is for general education only and does not constitute
                     financial or investment advice.
                     StayAhead is not liable for any decisions made based on our content. Please consult a qualified
