@@ -1,19 +1,20 @@
 /* Universal font and size*/
-*{
+* {
     font-family: Arial, Helvetica, sans-serif;
     font-size: 16px;
 }
 
 a {
-    text-decoration: none
+    text-decoration: none;
 }
-/*Nav bar*/
+
+/* Nav bar */
 .logo {
     backface-visibility: hidden;
 }
 
 .logo img {
-    width: 4rem;
+    width: 8rem;
     height: auto;
     border-radius: 48%;
 }
@@ -37,6 +38,7 @@ nav {
 .nav-link {
     padding: 0 0.5em;
 }
+
 .nav-link:hover {
     color: #FF3823;
 }
@@ -49,28 +51,27 @@ nav {
 
 .nav-item a {
     color: #fff;
-
-    padding-right: 1rem
+    padding-right: 1rem;
 }
 
 nav .nav-item:not(:last-child) .nav-link {
     border-right: 2px solid #fff;
 }
 
-.lowernav{
+.lowernav {
     background-color: #1820df;
 }
 
-
-/*FOOTER */
-.disclaimer{
+/* FOOTER */
+.disclaimer {
     display: flex;
     width: 100%;
     justify-content: center;
     align-items: center;
     background-color: #201CF1;
 }
-.disclaimer h6{
+
+.disclaimer h6 {
     font-size: xx-small;
     display: flex;
     width: 50%;
@@ -80,21 +81,220 @@ nav .nav-item:not(:last-child) .nav-link {
     margin: 2rem;
     color: #fff;
 }
-.team3{
+
+.team3 {
     background-color: #201CF1;
     color: white;
     padding-bottom: 1rem;
 }
-.team3 h5,.team3 p{
+
+.team3 h5,
+.team3 p {
     font-size: small;
     display: flex;
     justify-content: center;
     line-height: 0.5rem;
 }
-/*End of Footer */
 
+/* End of Footer */
 
-/* responsive web TODO */
-@media only screen and (max-width: 40rem){
+/* ========================================
+   SCAM ALERTS PAGE STYLES
+   ======================================== */
 
+/* Hero Section */
+.hero-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 15px;
+    padding: 3rem 2rem;
+    margin-bottom: 2rem;
+}
+
+/* Statistics Alert Card */
+.stat-card {
+    background: #fff3cd;
+    border-left: 4px solid #dc3545;
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card h3 {
+    color: #dc3545;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Key Defense Points */
+.key-points {
+    background: #fff;
+    border: 2px solid #0d6efd;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin: 2rem 0;
+}
+
+.key-points ul {
+    margin-bottom: 0;
+}
+
+.key-points li {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+/* Section Headers */
+.section-header {
+    text-align: center;
+    margin: 3rem 0 2rem 0;
+}
+
+.section-header h2 {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #212529;
+    margin-bottom: 0.5rem;
+}
+
+/* Resource Cards */
+.resource-card {
+    background: #ffffff;
+    border: 1px solid #dee2e6;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.resource-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transform: translateY(-3px);
+}
+
+.resource-card h2 {
+    color: #0d6efd;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.resource-card .subtitle {
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+/* Individual Resource Items */
+.resource-item {
+    background: #f8f9fa;
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    transition: background 0.2s ease;
+}
+
+.resource-item:hover {
+    background: #e9ecef;
+}
+
+.resource-item a {
+    text-decoration: none;
+    color: #0d6efd;
+    font-weight: 500;
+    display: flex;
+    align-items: start;
+    gap: 0.5rem;
+}
+
+.resource-item a:hover {
+    color: #0a58ca;
+}
+
+.resource-item .description {
+    color: #6c757d;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+    margin-left: 1.5rem;
+}
+
+.external-link-icon {
+    color: #6c757d;
+    font-size: 0.875rem;
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+}
+
+/* Badges */
+.badge-new {
+    background: #dc3545;
+    color: white;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-left: 0.5rem;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet and Mobile */
+@media only screen and (max-width: 768px) {
+    .hero-section {
+        padding: 2rem 1rem;
+    }
+
+    .resource-card {
+        margin-bottom: 2rem;
+    }
+
+    .stat-card {
+        text-align: center;
+    }
+
+    .stat-card .btn {
+        margin-top: 1rem;
+    }
+
+    .key-points {
+        padding: 1rem;
+    }
+
+    .resource-item .description {
+        margin-left: 0;
+    }
+}
+
+/* Mobile Only */
+@media only screen and (max-width: 40rem) {
+    .hero-section h1 {
+        font-size: 1.75rem;
+    }
+
+    .resource-card h2 {
+        font-size: 1.5rem;
+    }
+
+    .section-header h2 {
+        font-size: 1.5rem;
+    }
+
+    nav {
+        flex-direction: column;
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    .nav-item a {
+        font-size: 0.875rem;
+    }
+
+    .disclaimer h6 {
+        width: 90%;
+    }
 }
