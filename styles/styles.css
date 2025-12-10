@@ -7,6 +7,12 @@
   font-size: 16px;
 }
 
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100dvw;
+}
+
 a {
   text-decoration: none;
 }
@@ -19,12 +25,15 @@ a {
 .logo img {
   width: 2rem;
   height: auto;
-  margin: 0 0.5rem;
+  margin: 0 0.5rem 0 0;
   border-radius: 48%;
 }
 
-.logo a {
+.logo > a:link {
   color: #fff;
+  text-decoration: none;
+  font-weight: normal;
+  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,21 +41,25 @@ a {
 }
 
 nav {
-  background-color: #201cf1;
+  background-color: #00008B;
   display: flex;
   justify-content: space-between;
   height: 4rem;
   align-items: center;
+  margin: 1rem;
+  padding: 0 2rem;
+  border-radius: 1rem;
 }
 
 .nav-link:link {
-  color: #fff;
-  padding: 0 0.5em;
+  color: rgba(255, 255, 255, 0.7);
+  padding: 0 1rem; 
   font-size: small;
 }
 
 .nav-link:hover {
-  color: #ff3823;
+  color: #fff;
+  text-decoration: underline;
 }
 
 .nav-item li {
@@ -61,11 +74,13 @@ nav {
 }
 
 nav .nav-item:not(:last-child) .nav-link {
-  border-right: 2px solid #fff;
+  border-right: 1px solid #fff;
 }
 
 .lowernav {
-  background-color: #1820df;
+  background-color: #00008B;
+  margin: 0;
+  border-radius: 0;
 }
 
 /* Start of About Me section */
@@ -110,7 +125,7 @@ nav .nav-item:not(:last-child) .nav-link {
     width: 100%;
     justify-content: center;
     align-items: center;
-    background-color: #201CF1;
+    background-color: #00008B;
 }
 
 .disclaimer>h6 {
@@ -122,7 +137,8 @@ nav .nav-item:not(:last-child) .nav-link {
 }
 
 .team3 {
-  background-color: #201cf1;
+  background-color: #00008B;
+  padding-top: 1rem;
   color: white;
   padding-bottom: 1rem;
 }
@@ -133,6 +149,7 @@ nav .nav-item:not(:last-child) .nav-link {
   display: flex;
   justify-content: center;
   line-height: 0.5rem;
+  white-space: nowrap;
 }
 
 /* End of Footer */
@@ -175,7 +192,7 @@ nav .nav-item:not(:last-child) .nav-link {
 .key-points ul {
   display: flex;
   flex-direction: column;
-  background-color: #1820df;
+  background-color: #00008B;
   color: #fff;
   border-top: #fff 5px solid;
 }
@@ -183,9 +200,25 @@ nav .nav-item:not(:last-child) .nav-link {
 /*End of Footer */
 .landing {
   display: flex;
-  background-color: #1820df;
+  background: linear-gradient(
+    to bottom,
+    #00008B, /* Starting color (top) - Dark Blue */
+    #ADD8E6  /* Ending color (bottom) - Light Blue */
+  );
   color: #fff;
   border-top: #fff 5px solid;
+  margin: 1rem;
+  border-radius: 2rem;
+}
+
+.landing h2{
+  font-weight: bolder;
+  padding-left: 1rem;
+}
+
+.landing p{
+  font-weight: light;
+  padding-left: 1rem;
 }
 
 *.landingimgcontainer {
@@ -197,15 +230,32 @@ nav .nav-item:not(:last-child) .nav-link {
   display: flex;
   border-radius: 50%;
   overflow: hidden;
-  width: 90%;
+  margin: 1rem;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1/1;
+  margin: 2rem 0;
 }
 
 .btn-primary {
-  background-color: #ea2f5d;
+  border: none !important;
+  background-color: #ea2f5d !important; 
+}
+
+.btn-primary:hover {
+  border: none !important;
+  color: #ea2f5d !important;
+  background-color: #fff !important;
 }
 
 .btn-outline-danger {
+  border: none;
   --bs-btn-color: #ea2f5d;
+}
+
+.btn-outline-danger:hover {
+  background-color: #ea2f5d !important;
 }
 
 li {
@@ -308,6 +358,15 @@ input:focus {
   color: white;
 }
 
+.scam-alert-content{
+  max-width: 80dvw;
+  margin:auto;
+}
+
+footer{
+  background-color: #00008B;
+}
+
 /* responsive web TODO */
 /* for screen GREATER than 576px */
 @media only screen and (min-width: 576px) {
@@ -319,13 +378,9 @@ input:focus {
 /* for screen SMALLER than 576px */
 @media only screen and (max-width: 576px) {
     
-  /* .nav-link { */
-    /* color: #3cf11c; */
-    /* font-size: xx-large; */
-    /* justify-content: center; */
-    /* align-items: center; */
-    /* centers horizontally */
-  /* } */
+  nav {
+    margin: 0;
+  }
 
   .non-mobile {
     display: none;
@@ -341,17 +396,19 @@ input:focus {
 
   .mobile-nvbg {
     background-color: #201cf1;
+    border-radius: 0.5rem;
   }
 
   .navbar-collapse {
     top: 0;
     background: rgba(0, 0, 0, 0.7);
     transition: 0.3s ease-in-out;
-    border-radius: 0 0rem 0.5rem 0.5rem;
+    border-radius: 0.5rem 0.5rem;
   }
 
   .active {
-    color: #ff3823 !important;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.3) !important;
   }
 
   .landing {
@@ -364,7 +421,7 @@ input:focus {
   }
 
   .nav-item a {
-    color: #201cf1;
+    color: #00008B;
   }
 
   .scam-alert-content{
@@ -533,10 +590,6 @@ input:focus {
 
   .lowernav {
     display: none;
-  }
-
-  .nav-item a {
-    color: #201cf1;
   }
 
   /* Mobile adjustments for login */
