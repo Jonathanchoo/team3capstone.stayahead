@@ -303,19 +303,22 @@ input:focus {
 /* responsive web TODO */
 /* for screen GREATER than 576px */
 @media only screen and (min-width: 576px) {
+
     .text-block{
-    text-align: center;
-   }
+        text-align: center;
+    }
 }
 
 /* for screen SMALLER than 576px */
 @media only screen and (max-width: 576px) {
-     .nav-link{
-    color:#3cf11c;
-    font-size: xx-large;
-    justify-content: center;
-    align-items: center;
-    /* centers horizontally */
+    
+    .nav-link{
+        color:#3cf11c;
+        font-size: xx-large;
+        justify-content: center;
+        align-items: center;
+        /* centers horizontally */
+    }
 }
 
 .key-points li {
