@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,11 +25,11 @@
 
         .game-container {
             max-width: 700px;
-            margin: 0 auto;
+            margin: 2rem auto;
             background: white;
             border-radius: 15px;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            padding: 40px;
+            padding: 4rem;
         }
 
         .header {
@@ -187,12 +188,14 @@
             cursor: not-allowed;
         }
 
-        .btn-restart {
+        .btn-restart,
+        .btn-start {
             background: #3498db;
             color: white;
         }
 
-        .btn-restart:hover {
+        .btn-restart:hover,
+        .btn-start:hover {
             background: #2980b9;
             transform: translateY(-2px);
         }
@@ -207,11 +210,11 @@
         }
 
         .score-circle {
-            width: 150px;
-            height: 150px;
+            width: 80%;
+            height: 50%;
             margin: 0 auto 30px;
             background: linear-gradient(135deg, #3498db, #2980b9);
-            border-radius: 50%;
+            border-radius: 5px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -235,8 +238,9 @@
         }
     </style>
 </head>
+
 <body>
-      <!--Nav bar-->
+    <!--Nav bar-->
     <section class="non-mobile">
         <nav>
             <div class="logo p-2">
@@ -282,7 +286,8 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarsExample01">
                     <ul class="navbar-nav me-auto mb-2 ">
-                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
                         <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="scamalerts.html">Scam Alerts</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="game.html">Game</a> </li>
@@ -293,17 +298,26 @@
         </nav>
     </section>
     <!--This is the middle part, insert your page content here-->
+
     <div class="game-container">
         <div class="header">
             <h1>🔍 Spot the Scam Quiz</h1>
             <p>Test your knowledge! Can you identify common scams in Singapore?</p>
         </div>
+        <div id="prequiz-section" class="">
+            <h5 class="w-100 justify-content-center">Welcome to StayAhead , Spot the Scam Quiz ! </h5>
+            <p> You are about to take part in our January Scam Alert Quiz Campaign. <br>
+                Points will be awarded for correctly answering the questions. <br>
+                Additional Points would be awarded for how quickly you finish the quiz!
+            </p>
 
+            <button class="btn-custom btn-start d-flex  w-100 justify-content-center" id="start-btn">Start Quiz</button>
+        </div>
         <div id="quiz-section">
             <div class="progress-bar-container">
                 <div class="progress-label">
                     <span>Progress</span>
-                    <span><span id="current-question">1</span>/<span id="total-questions">14</span></span>
+                    <span><span id="current-question">1</span>/<span id="total-questions">10</span></span>
                 </div>
                 <div class="progress">
                     <div class="progress-bar" id="progress-bar" style="width: 7%;"></div>
@@ -323,7 +337,7 @@
         </div>
 
         <div class="results-container" id="results-section">
-            <div class="score-circle" id="final-score">14/14</div>
+            <div class="score-circle" id="final-score">10/10</div>
             <div class="results-title" id="results-title">Excellent!</div>
             <div class="results-text" id="results-text">You scored perfectly! Stay alert!</div>
             <button class="btn-custom btn-restart" id="restart-btn">Try Again</button>
@@ -421,21 +435,29 @@
         let currentQuestion = 0;
         let score = 0;
         let answered = false;
+        let startTime;
+        let bonusPoints = 0;
+        let availableQns= [];
+
+        function shuffle(array) {       //shuffle questions
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]]; // Swap elements
+            }
+            return array;
+        }
 
         function loadQuestion() {
-            const data = quizData[currentQuestion];
-            document.getElementById('question-label').textContent = `Question ${currentQuestion + 1}`;
-            document.getElementById('question-text').textContent = data.scenario;
-            document.getElementById('current-question').textContent = currentQuestion + 1;
-            document.getElementById('total-questions').textContent = quizData.length;
-
-            const progressPercent = ((currentQuestion + 1) / quizData.length) * 100;
-            document.getElementById('progress-bar').style.width = progressPercent + '%';
+            const data = availableQns[currentQuestion];
+            document.getElementById('question-label').textContent = `Question ${currentQuestion + 1}`;  //current question no.
+            document.getElementById('question-text').textContent = data.scenario;                       // update question
+            document.getElementById('current-question').textContent = currentQuestion + 1;             //current question no. progressbar
+            document.getElementById('progress-bar').style.width = ((currentQuestion + 1)*10) + '%';  // color on progressbar
 
             const optionsContainer = document.getElementById('options-container');
             optionsContainer.innerHTML = '';
 
-            data.options.forEach((option, index) => {
+            data.options.forEach((option, index) => {       //insert answer option buttons
                 const btn = document.createElement('button');
                 btn.className = 'option-btn';
                 btn.textContent = option;
@@ -443,16 +465,16 @@
                 optionsContainer.appendChild(btn);
             });
 
-            document.getElementById('feedback').innerHTML = '';
-            document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect');
+            document.getElementById('feedback').innerHTML = '';     // remove explanation
+            document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect'); // remove correct/incorrect answer 
             document.getElementById('next-btn').disabled = true;
             answered = false;
         }
 
         function selectOption(index) {
-            if (answered) return;
+            if (answered) return;       
 
-            const data = quizData[currentQuestion];
+            const data = availableQns[currentQuestion];
             answered = true;
 
             const options = document.querySelectorAll('.option-btn');
@@ -460,7 +482,7 @@
 
             options[index].classList.add(index === data.correct ? 'correct' : 'incorrect');
 
-            if (index === data.correct) {
+            if (index === data.correct) { //check correct answer
                 score++;
             }
 
@@ -474,9 +496,11 @@
         function nextQuestion() {
             currentQuestion++;
 
-            if (currentQuestion < quizData.length) {
+            if (currentQuestion < 10) {
                 loadQuestion();
             } else {
+                const endTime = performance.now();  // stop bonus timer
+                bonusPoints = Math.max(0, Math.floor(100 - (endTime - startTime) / 1000)); //calculate bonus points
                 showResults();
             }
         }
@@ -485,20 +509,19 @@
             document.getElementById('quiz-section').style.display = 'none';
             document.getElementById('results-section').classList.add('show');
 
-            const percent = Math.round((score / quizData.length) * 100);
-            document.getElementById('final-score').textContent = `${score}/${quizData.length}`;
+            document.getElementById('final-score').innerText = `Score :${score} \nBonus Points : ${bonusPoints}`;
 
             let title, message;
-            if (percent === 100) {
+            if (score > 10) {
                 title = "🏆 Perfect Score!";
                 message = "You're a scam-spotting expert! You identified all scams correctly. You're well-protected!";
-            } else if (percent >= 85) {
+            } else if (score >= 8) {
                 title = "🎉 Excellent!";
                 message = "Great job! You caught most of the scams. Stay vigilant and keep learning!";
-            } else if (percent >= 70) {
+            } else if (score >= 7) {
                 title = "👍 Good Effort!";
                 message = "You got most right! Review the missed ones to strengthen your scam awareness.";
-            } else if (percent >= 50) {
+            } else if (score >= 5) {
                 title = "📚 Learning!";
                 message = "Keep learning about these scams to protect yourself and others!";
             } else {
@@ -513,21 +536,29 @@
         function restartQuiz() {
             currentQuestion = 0;
             score = 0;
+            bonusPoints = 0;
             answered = false;
 
             document.getElementById('quiz-section').style.display = 'block';
             document.getElementById('results-section').classList.remove('show');
-
+            availableQns = shuffle(quizData);   //shuffle quiz
             loadQuestion();
+            startTime = performance.now(); // start timer
         }
 
         document.getElementById('next-btn').onclick = nextQuestion;
         document.getElementById('restart-btn').onclick = restartQuiz;
 
         // Initialize
-        loadQuestion();
+        let startbtn = document.getElementById('start-btn');
+        startbtn.addEventListener('click', function () {
+            availableQns = shuffle(quizData);   //shuffle quiz
+            loadQuestion();             
+            document.getElementById('prequiz-section').classList = 'd-none'; // remove display of pre-quiz notice
+            startTime = performance.now(); //start timer
+        });
     </script>
-     <!--Footer nav links-->
+    <!--Footer nav links-->
     <footer>
         <div>
             <nav class="lowernav justify-content-center">
@@ -564,7 +595,8 @@
         <!--Organization & Copyright-->
         <div class="team3">
             <div>
-                <h5 class=class="card-footer text-body-secondary justify-content-center">JFSD07 Team 3, Generation Singapore.</h5>
+                <h5 class=class="card-footer text-body-secondary justify-content-center">JFSD07 Team 3, Generation
+                    Singapore.</h5>
                 <p> In partnership with Microsoft & Temasek Poly.</p>
             </div>
             <div>
@@ -573,4 +605,5 @@
         </div>
     </footer>
 </body>
+
 </html>
