@@ -7,6 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/styles.css">
     <style>
         * {
             margin: 0;
@@ -235,6 +236,63 @@
     </style>
 </head>
 <body>
+      <!--Nav bar-->
+    <section class="non-mobile">
+        <nav>
+            <div class="logo p-2">
+                <a class="nav-link text-white justify-content-start" href="about.html">
+                    <img src="assets\images\v1.png">
+                    StayAhead
+                </a>
+            </div>
+            <div>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item px-1">
+                        <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="about.html">About</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="scamalerts.html">Scam Alerts</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="game.html">Game</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="gisignuplogin.html">Sign-up/Login</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </section>
+    <!--navbar   mobile mode-->
+    <section class="mobile d-sm-none">
+        <nav class="navbar navbar-expand-lg navbar-dark position-fixed w-100" aria-label="First navbar example">
+            <div class="container-fluid">
+                <div class="mobile-nvbg d-flex justify-content-between w-100">
+                    <div class="logo p-2">
+                        <a class="nav-link text-white justify-content-center" href="about.html">
+                            <img src="assets\images\v1.png">
+                            StayAhead
+                        </a>
+                    </div><button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false"
+                        aria-label="Toggle navigation"> <span class="navbar-toggler-icon"></span> </button>
+                </div>
+                <div class="navbar-collapse collapse" id="navbarsExample01">
+                    <ul class="navbar-nav me-auto mb-2 ">
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="scamalerts.html">Scam Alerts</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="game.html">Game</a> </li>
+                        <li class="nav-item"> <a class="nav-link" href="signuplogin.html">Signup/Login</a> </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </section>
+    <!--This is the middle part, insert your page content here-->
     <div class="game-container">
         <div class="header">
             <h1>🔍 Spot the Scam Quiz</h1>
@@ -469,5 +527,50 @@
         // Initialize
         loadQuestion();
     </script>
+     <!--Footer nav links-->
+    <footer>
+        <div>
+            <nav class="lowernav justify-content-center">
+                <ul class="nav justify-content-center">
+                    <li class="nav-item px-1">
+                        <a class="nav-link active" aria-current="page" href="/index.html">Home</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="/about.html">About</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link " href="/scamalerts.html">Scam Alerts</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="#">Game</a>
+                    </li>
+                    <li class="nav-item px-1">
+                        <a class="nav-link" href="/signuplogin.html">Sign-up/Login</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!--Disclaimer section-->
+        <div class="bg-primary">
+            <div class="disclaimer justify-content-center">
+                <h6 class="text-center">
+                    DISCLAIMERS: Information on this site is for general education only and does not constitute
+                    financial or investment advice.
+                    StayAhead is not liable for any decisions made based on our content. Please consult a qualified
+                    professional for personalised guidance.
+                </h6>
+            </div>
+        </div>
+        <!--Organization & Copyright-->
+        <div class="team3">
+            <div>
+                <h5 class=class="card-footer text-body-secondary justify-content-center">JFSD07 Team 3, Generation Singapore.</h5>
+                <p> In partnership with Microsoft & Temasek Poly.</p>
+            </div>
+            <div>
+                <h5>&copy; 2025 StayAhead &trade; All rights reserved</h5>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
