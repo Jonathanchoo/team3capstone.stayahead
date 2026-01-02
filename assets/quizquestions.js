@@ -84,6 +84,30 @@ const quizData = [
         explanation: "If a deal seems too good to be true, it is. Never transfer money for vouchers or goods from strangers online. Use official retailers or trusted platforms like Carousell with verified sellers."
     }
 ];
+//TODO : pull highscore from database
+// temporary highscore
+let highScore = [
+    {
+        userId: "john",
+        score: 140,
+    },
+    {
+        userId: "tom",
+        score: 50,
+    },
+    {
+        userId: "mary",
+        score: 120,
+    },
+    {
+        userId: "dick",
+        score: 110,
+    },
+    {
+        userId: "harry",
+        score: 130,
+    },
+];
 
 let currentQuestion = 0;
 let score = 0;
@@ -91,6 +115,7 @@ let answered = false;
 let startTime;
 let bonusPoints = 0;
 let availableQns = [];
+
 const startbtn = document.getElementById('start-btn');
 const nextbtn = document.getElementById('next-btn');
 const feedback = document.getElementById('feedback');
@@ -161,8 +186,59 @@ function nextQuestion() {
         showResults();
     }
 }
+// TODO : send score to backend to update, sort then pull for use
+function updateHighscore() {
+    highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );   // sort score by decending order
+    let totalScore = score + bonusPoints
+    if (totalScore > highScore[4].score){                //compare score of 5th place, replace if greater
+    let userId = document.getElementById('userId').value;
+    highScore[4].score = totalScore;
+    highScore[4].userId = userId;
+    }
+    highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );
+}
+/*
+async function updateHighscore() {
+    let totalScore = score + bonusPoints;
+    let userId = document.getElementById('userId').value;
+
+    const newHighscore = {
+        userId: userId,
+        score: totalScore,
+        timestamp: Date.now()
+    };
+
+    try {
+        const response = await fetch('XXXX-API-domain.com', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(newHighscore)
+        });
+
+        if (response.ok) {
+            const updatedHighscore = await response.json(); 
+            highscore = updatedHighscore ;
+        } 
+    } catch (error) {
+       document.getElementById('scoreUpdate').textContent =  ' Error Occurred while Updating highscore' ;
+    }
+}
+*/
+//backend verify score within max possible limit,save score to data base
+
+function printHighscore(){      // update the leaderboard with the new scores
+    let leaderboardId = document.querySelectorAll('.leaderid');
+    let leaderboardScore = document.querySelectorAll('.leaderscore');
+    for (let i = 0; i < highScore.length; i++) {
+        leaderboardId[i].textContent = highScore[i].userId;
+        leaderboardScore[i].textContent = highScore[i].score;
+    }
+}
+
 
 function showResults() {
+    updateHighscore();
+    printHighscore();
     quizSection.style.display = 'none';
     resultSection.classList.add('show');
 
@@ -208,6 +284,12 @@ document.getElementById('restart-btn').onclick = restartQuiz;
 
 // Initialize
 startbtn.addEventListener('click', function () {
+    const userId = document.getElementById('userId').value;
+    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if((!emailRegex.test(userId))|| userId === ""){
+        document.getElementById('invalid-input').classList.remove("d-none");
+        return;
+    }
     availableQns = shuffle(quizData);   //shuffle quiz
     nextbtn.classList.remove("d-none");
     loadQuestion();

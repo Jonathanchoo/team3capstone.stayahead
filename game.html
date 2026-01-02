@@ -18,11 +18,13 @@
             box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
             padding: 4rem;
         }
-        .header{
-            background: linear-gradient(180deg, #e0e3e6, #ea2f5d );
+
+        .header {
+            background: linear-gradient(180deg, #e0e3e6, #ea2f5d);
         }
+
         .header h1 {
-            color: #2c3e50; 
+            color: #2c3e50;
         }
 
         .header p {
@@ -38,7 +40,7 @@
             border-radius: 10px;
         }
 
-        .progress-bar {  
+        .progress-bar {
             background: linear-gradient(90deg, #3498db, #2980b9);
             transition: width 0.3s ease;
         }
@@ -119,7 +121,7 @@
             flex: 1;
             padding: 1rem 1.5rem;
             border: none;
-            border-radius: 10px;       
+            border-radius: 10px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
@@ -141,7 +143,7 @@
 
         .btn-restart,
         .btn-start {
-            background:#3b0697 ;
+            background: #3b0697;
             color: white;
         }
 
@@ -171,12 +173,13 @@
             justify-content: center;
             color: white;
             font-size: 3rem;
-            
+
         }
+
         .results-title {
             font-size: 2rem;
             color: #2c3e50;
-           
+
         }
 
         .results-text {
@@ -233,7 +236,8 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarsExample01">
                     <ul class="navbar-nav me-auto mb-2 ">
-                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
                         <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="scamalerts.html">Scam Alerts</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="game.html">Game</a> </li>
@@ -251,12 +255,22 @@
             <p>Test your knowledge! Can you identify common scams in Singapore?</p>
         </div>
         <div id="prequiz-section" class="">
-            <h5 class="d-flex w-100 justify-content-center fw-bolder mb-4">Welcome to StayAhead , Spot the Scam Quiz ! </h5>
-            <p class="d-flex w-100 text-center m-4"> You are about to take part in our January Scam Alert Quiz Campaign.<br>
+            <h5 class="d-flex w-100 justify-content-center fw-bolder mb-4">Welcome to StayAhead , Spot the Scam Quiz !
+            </h5>
+            <p class="d-flex w-100 text-center m-4"> You are about to take part in our January Scam Alert Quiz
+                Campaign.<br>
                 Points will be awarded for correctly answering the questions.<br>
-                Additional Points would be awarded for how quickly you finish the quiz!
+                Additional Points would be awarded for how quickly you finish the quiz.<br>
+                Log in to participate in the prize reward for the Top 5 player of the Campaign!
             </p>
-            <button class="btn-custom btn-start d-flex fw-semibold w-100 justify-content-center" id="start-btn">Start Quiz</button>
+            <form class="needs-validation" novalidate>
+                <input class="w-100 mb-4 p-2 rounded form-control" type="email" id="userId"
+                    placeholder="johnCena@hotmail.com">
+                <div class="d-none" id="invalid-input" > Please enter a valid email</div>
+                <button class="btn btn-custom btn-start d-flex fw-semibold w-100 justify-content-center" id="start-btn"
+                    type="button">Start Quiz</button>
+                
+            </form>
         </div>
         <div id="quiz-section">
             <div class="progress-bar-container mt-3 mb-5">
@@ -285,8 +299,8 @@
             <div class="score-circle fw-bold" id="final-score">10/10</div>
             <div class="results-title mb-2 fw-bold " id="results-title">Excellent!</div>
             <div class="results-text mb-5" id="results-text">You scored perfectly! Stay alert!</div>
-           
-            <h2 class="w-100 fw-bolder m-3" >High Scores</h2>
+
+            <h2 class="w-100 fw-bolder m-3">High Scores</h2>
             <div class="table-container w-100">
                 <table class="w-100 table table-danger table-striped table-hover">
                     <thead>
@@ -299,36 +313,37 @@
                     <tbody>
                         <tr>
                             <th scope="row">1</td>
-                            <td>Player One</td>
-                            <td>1500</td>
+                            <td class="leaderid">Player One</td>
+                            <td class="leaderscore">1500</td>
                         </tr>
-                        <tr>
+                        <tr id="second">
                             <th scope="row">2</td>
-                            <td>Player Two</td>
-                            <td>1200</td>
+                            <td class="leaderid">Player Two</td>
+                            <td class="leaderscore">1200</td>
                         </tr>
-                        <tr>
+                        <tr id="third">
                             <th scope="row">3</td>
-                            <td>Player Three</td>
-                            <td>950</td>
+                            <td class="leaderid">Player Three</td>
+                            <td class="leaderscore">950</td>
                         </tr>
-                        <tr>
+                        <tr id="fourth">
                             <th scope="row">4</td>
-                            <td>Player Four</td>
-                            <td>800</td>
+                            <td class="leaderid">Player Four</td>
+                            <td class="leaderscore">800</td>
                         </tr>
-                        <tr>
+                        <tr id="fifth">
                             <th scope="row">5</td>
-                            <td>Player Five</td>
-                            <td>720</td>
+                            <td class="leaderid">Player Five</td>
+                            <td class="leaderscore">720</td>
                         </tr>
                     </tbody>
                 </table>
+                <div id="scoreUpdate"></div>
             </div>
             <button class="btn-custom fw-semibold btn-restart" id="restart-btn">Try Again</button>
         </div>
 
-        
+
     </div>
 
 
