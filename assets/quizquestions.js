@@ -191,13 +191,13 @@ function updateHighscore() {
     highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );   // sort score by decending order
     let totalScore = score + bonusPoints
     if (totalScore > highScore[4].score){                //compare score of 5th place, replace if greater
-    let userId = document.getElementById('userId').value;
+    let userEmail = document.getElementById('userEmail').value;
     highScore[4].score = totalScore;
-    highScore[4].userId = userId;
+    highScore[4].userId = userEmail;
     }
     highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );
 }
-/*
+/* 
 async function updateHighscore() {
     let totalScore = score + bonusPoints;
     let userId = document.getElementById('userId').value;
@@ -234,7 +234,6 @@ function printHighscore(){      // update the leaderboard with the new scores
         leaderboardScore[i].textContent = highScore[i].score;
     }
 }
-
 
 function showResults() {
     updateHighscore();
@@ -279,17 +278,25 @@ function restartQuiz() {
     startTime = performance.now(); // start timer
 }
 
+document.getElementById('register-btn').addEventListener ('click', function(){
+    const totalScore = score + bonusPoints;
+    localStorage.setItem("userScore", JSON.stringify(totalScore)); // saving highscore to localstorage
+    
+    window.location.href = "signuplogin.html";    // send user to register page
+});
+
 nextbtn.onclick = nextQuestion;
 document.getElementById('restart-btn').onclick = restartQuiz;
 
 // Initialize
-startbtn.addEventListener('click', function () {
-    const userId = document.getElementById('userId').value;
+startbtn.addEventListener('click', function () { 
+    const userEmail = document.getElementById('userEmail').value;
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-    if((!emailRegex.test(userId))|| userId === ""){
+    if((!emailRegex.test(userEmail))|| userEmail === ""){
         document.getElementById('invalid-input').classList.remove("d-none");
         return;
     }
+    localStorage.setItem("userEmailString", JSON.stringify(userEmail)); //saving email to localstorage
     availableQns = shuffle(quizData);   //shuffle quiz
     nextbtn.classList.remove("d-none");
     loadQuestion();
