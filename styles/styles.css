@@ -4,20 +4,24 @@
     font-size: 16px;
 }
 
+
 a {
     text-decoration: none;
 }
+
 
 /* Nav bar */
 .logo {
     backface-visibility: hidden;
 }
 
+
 .logo img {
     width: 8rem;
     height: auto;
     border-radius: 48%;
 }
+
 
 .logo a {
     color: #fff;
@@ -27,6 +31,7 @@ a {
     align-content: center;
 }
 
+
 nav {
     background-color: #201CF1;
     display: flex;
@@ -35,13 +40,16 @@ nav {
     align-items: center;
 }
 
+
 .nav-link {
     padding: 0 0.5em;
 }
 
+
 .nav-link:hover {
     color: #FF3823;
 }
+
 
 .nav-item li {
     display: flex;
@@ -49,18 +57,22 @@ nav {
     width: 8rem;
 }
 
+
 .nav-item a {
     color: #fff;
     padding-right: 1rem;
 }
 
+
 nav .nav-item:not(:last-child) .nav-link {
     border-right: 2px solid #fff;
 }
 
+
 .lowernav {
     background-color: #1820df;
 }
+
 
 /* FOOTER */
 .disclaimer {
@@ -70,6 +82,7 @@ nav .nav-item:not(:last-child) .nav-link {
     align-items: center;
     background-color: #201CF1;
 }
+
 
 .disclaimer h6 {
     font-size: xx-small;
@@ -82,11 +95,13 @@ nav .nav-item:not(:last-child) .nav-link {
     color: #fff;
 }
 
+
 .team3 {
     background-color: #201CF1;
     color: white;
     padding-bottom: 1rem;
 }
+
 
 .team3 h5,
 .team3 p {
@@ -96,10 +111,13 @@ nav .nav-item:not(:last-child) .nav-link {
     line-height: 0.5rem;
 }
 
+
 /* End of Footer */
 
 
+
 /* SCAM ALERTS PAGE STYLES */
+
 
 /* Hero Section */
 .hero-section {
@@ -108,6 +126,7 @@ nav .nav-item:not(:last-child) .nav-link {
     padding: 3rem 2rem;
     margin-bottom: 2rem;
 }
+
 
 /* Statistics Alert Card */
 .stat-card {
@@ -119,11 +138,13 @@ nav .nav-item:not(:last-child) .nav-link {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 .stat-card h3 {
     color: #dc3545;
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
 }
+
 
 /* Key Defense Points */
 .key-points {
@@ -134,19 +155,19 @@ nav .nav-item:not(:last-child) .nav-link {
     margin: 2rem 0;
 }
 
+
 .key-points ul {
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* centers horizontally */
 }
+
 
 .key-points li {
     text-align: center;
-    /* centers the text inside each item */
     width: 100%;
-    /* ensures full width for centering */
 }
+
 
 /* Section Headers */
 .section-header {
@@ -154,12 +175,14 @@ nav .nav-item:not(:last-child) .nav-link {
     margin: 3rem 0 2rem 0;
 }
 
+
 .section-header h2 {
     font-size: 2rem;
     font-weight: bold;
     color: #212529;
     margin-bottom: 0.5rem;
 }
+
 
 /* Resource Cards */
 .resource-card {
@@ -172,10 +195,12 @@ nav .nav-item:not(:last-child) .nav-link {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
+
 .resource-card:hover {
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
     transform: translateY(-3px);
 }
+
 
 .resource-card h2 {
     color: #0d6efd;
@@ -186,12 +211,14 @@ nav .nav-item:not(:last-child) .nav-link {
     gap: 0.5rem;
 }
 
+
 .resource-card .subtitle {
     color: #6c757d;
     font-size: 1rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
+
 
 /* Individual Resource Items */
 .resource-item {
@@ -202,9 +229,11 @@ nav .nav-item:not(:last-child) .nav-link {
     transition: background 0.2s ease;
 }
 
+
 .resource-item:hover {
     background: #e9ecef;
 }
+
 
 .resource-item a {
     text-decoration: none;
@@ -215,9 +244,11 @@ nav .nav-item:not(:last-child) .nav-link {
     gap: 0.5rem;
 }
 
+
 .resource-item a:hover {
     color: #0a58ca;
 }
+
 
 .resource-item .description {
     color: #6c757d;
@@ -226,12 +257,14 @@ nav .nav-item:not(:last-child) .nav-link {
     margin-left: 1.5rem;
 }
 
+
 .external-link-icon {
     color: #6c757d;
     font-size: 0.875rem;
     flex-shrink: 0;
     margin-top: 0.2rem;
 }
+
 
 /* Badges */
 .badge-new {
@@ -244,7 +277,355 @@ nav .nav-item:not(:last-child) .nav-link {
 }
 
 
-/* RESPONSIVE DESIGN */
+/* ========================================
+   LEADERBOARD PAGE STYLES
+   ======================================== */
+
+:root {
+    --color-bg-primary: #f8fafc;
+    --color-bg-secondary: #ffffff;
+    --color-accent-primary: #0891b2;
+    --color-accent-hover: #0e7490;
+    --color-text-primary: #1e293b;
+    --color-text-secondary: #64748b;
+    --color-success: #10b981;
+    --color-border: #e2e8f0;
+}
+
+.leaderboard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+    .leaderboard-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.leaderboard-card {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.card-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-primary);
+    justify-content: center;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.section-label {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    font-weight: 500;
+    display: block;
+    text-align: center;
+}
+
+.score-box {
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.05) 0%, rgba(8, 145, 178, 0.02) 100%);
+    border: 2px solid var(--color-accent-primary);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.score-badge {
+    display: inline-block;
+    background-color: var(--color-accent-primary);
+    color: #ffffff;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.score-username {
+    font-size: 32px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-text-primary);
+}
+
+.score-subtitle {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    margin-bottom: 24px;
+}
+
+.score-metrics {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.metric-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: var(--color-accent-primary);
+}
+
+.achievement-list {
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.03) 0%, rgba(8, 145, 178, 0.01) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 32px;
+}
+
+.achievement-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.achievement-item:last-child {
+    margin-bottom: 0;
+}
+
+.achievement-check {
+    color: var(--color-success);
+    font-size: 18px;
+    font-weight: bold;
+    flex-shrink: 0;
+}
+
+.achievement-text {
+    font-size: 14px;
+    color: var(--color-text-primary);
+}
+
+.reward-status {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.03) 100%);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    padding: 16px;
+    margin-top: 16px;
+    margin-bottom: 0;
+}
+
+.reward-status-text {
+    font-size: 13px;
+    color: var(--color-text-primary);
+}
+
+.reward-status-label {
+    font-weight: 600;
+    color: var(--color-success);
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px;
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-secondary);
+    border-radius: 8px;
+    margin-bottom: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.leaderboard-item:hover {
+    background-color: #f1f5f9;
+}
+
+.leaderboard-item:last-child {
+    border-bottom: none;
+}
+
+.leaderboard-rank {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--color-accent-primary);
+    min-width: 30px;
+    margin-right: 16px;
+}
+
+.leaderboard-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    flex-grow: 1;
+}
+
+.leaderboard-score {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--color-accent-primary);
+}
+
+.top-5-section {
+    background: linear-gradient(135deg, rgba(8, 145, 178, 0.03) 0%, rgba(8, 145, 178, 0.01) 100%);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 24px;
+}
+
+.top-5-title {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-bottom: 16px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.achievement-card-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: var(--color-text-primary);
+}
+
+.icon {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #0891b2, #10b981);
+    border-radius: 6px;
+    margin-right: 8px;
+    position: relative;
+}
+
+.icon::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Content section background */
+.content {
+    background-color: var(--color-bg-primary);
+    padding: 40px 20px;
+}
+
+/* Redeem Section */
+.redeem-section {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
+}
+
+.redeem-item-preview {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #f1f5f9;
+    height: 300px;
+    width: 100%;
+}
+
+.redeem-item-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.redeem-item-preview img:hover {
+    transform: scale(1.05);
+}
+
+.redeem-button {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.redeem-button--locked {
+    background-color: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+    border: 2px solid #9ca3af;
+}
+
+.redeem-button--locked:hover {
+    background-color: #d1d5db;
+}
+
+.redeem-button--unlocked {
+    background-color: var(--color-success);
+    color: #ffffff;
+    border: 2px solid var(--color-success);
+}
+
+.redeem-button--unlocked:hover {
+    background-color: #059669;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+}
+
+.lock-icon {
+    font-size: 18px;
+}
+
+/* End of Leaderboard Styles */
+
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
 
 /* Tablet and Mobile */
 @media only screen and (max-width: 768px) {
@@ -271,7 +652,33 @@ nav .nav-item:not(:last-child) .nav-link {
     .resource-item .description {
         margin-left: 0;
     }
+
+    .leaderboard-container {
+        grid-template-columns: 1fr;
+    }
+
+    .leaderboard-card {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 24px;
+    }
+
+    .redeem-item-preview {
+        height: 250px;
+    }
+
+    .redeem-button {
+        padding: 14px;
+        font-size: 14px;
+    }
+
+    .content {
+        padding: 30px 15px;
+    }
 }
+
 
 /* Mobile Only */
 @media only screen and (max-width: 40rem) {
@@ -299,5 +706,55 @@ nav .nav-item:not(:last-child) .nav-link {
 
     .disclaimer h6 {
         width: 90%;
+    }
+
+    .leaderboard-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .leaderboard-card {
+        padding: 16px;
+    }
+
+    .card-title {
+        font-size: 20px;
+    }
+
+    .score-metrics {
+        grid-template-columns: 1fr;
+    }
+
+    .metric-value {
+        font-size: 24px;
+    }
+
+    .leaderboard-item {
+        padding: 12px;
+    }
+
+    .leaderboard-rank {
+        font-size: 14px;
+    }
+
+    .leaderboard-name {
+        font-size: 13px;
+    }
+
+    .leaderboard-score {
+        font-size: 13px;
+    }
+
+    .redeem-item-preview {
+        height: 200px;
+    }
+
+    .redeem-button {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .content {
+        padding: 20px 10px;
     }
 }
