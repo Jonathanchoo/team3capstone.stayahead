@@ -7,7 +7,8 @@
   font-size: 16px;
 }
 
-html, body{
+html,
+body {
   margin: 0;
   padding: 0;
   width: 100dvw;
@@ -29,7 +30,7 @@ a {
   border-radius: 48%;
 }
 
-.logo > a:link {
+.logo>a:link {
   color: #fff;
   text-decoration: none;
   font-weight: normal;
@@ -53,7 +54,7 @@ nav {
 
 .nav-link:link {
   color: rgba(255, 255, 255, 0.7);
-  padding: 0 1rem; 
+  padding: 0 1rem;
   font-size: small;
 }
 
@@ -92,7 +93,7 @@ nav .nav-item:not(:last-child) .nav-link {
   /* align-items: flex-start; */
 }
 
-.about-text > h3 {
+.about-text>h3 {
   font-size: 1.8rem;
   /* Converted from 1.8em */
   font-weight: bold;
@@ -101,7 +102,7 @@ nav .nav-item:not(:last-child) .nav-link {
   /* Converted from 15px */
 }
 
-.about-text > p {
+.about-text>p {
   font-size: x-large;
 }
 
@@ -121,19 +122,19 @@ nav .nav-item:not(:last-child) .nav-link {
 /*FOOTER */
 
 .disclaimer {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    background-color: #00008B;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: #00008B;
 }
 
 .disclaimer>h6 {
-    font-size: xx-small;
-    display: flex;
-    width: 50%;
-    margin: 1rem;
-    color: #fff;
+  font-size: xx-small;
+  display: flex;
+  width: 50%;
+  margin: 1rem;
+  color: #fff;
 }
 
 .team3 {
@@ -200,23 +201,24 @@ nav .nav-item:not(:last-child) .nav-link {
 /*End of Footer */
 .landing {
   display: flex;
-  background: linear-gradient(
-    to bottom,
-    #00008B, /* Starting color (top) - Dark Blue */
-    #ADD8E6  /* Ending color (bottom) - Light Blue */
-  );
+  background: linear-gradient(to bottom,
+      #00008B,
+      /* Starting color (top) - Dark Blue */
+      #ADD8E6
+      /* Ending color (bottom) - Light Blue */
+    );
   color: #fff;
   border-top: #fff 5px solid;
   margin: 1rem;
   border-radius: 2rem;
 }
 
-.landing h2{
+.landing h2 {
   font-weight: bolder;
   padding-left: 1rem;
 }
 
-.landing p{
+.landing p {
   font-weight: light;
   padding-left: 1rem;
 }
@@ -240,7 +242,7 @@ nav .nav-item:not(:last-child) .nav-link {
 
 .btn-primary {
   border: none !important;
-  background-color: #ea2f5d !important; 
+  background-color: #ea2f5d !important;
 }
 
 .btn-primary:hover {
@@ -270,9 +272,8 @@ li {
   /* background-image: url("http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
-  min-height: calc(
-    100vh - 8rem
-  ); /* Adjust height to account for header/footer */
+  min-height: calc(100vh - 8rem);
+  /* Adjust height to account for header/footer */
   font-family: "Numans", sans-serif;
   display: flex;
   align-items: center;
@@ -304,7 +305,7 @@ li {
   cursor: pointer;
 }
 
-.login-card .card-header{
+.login-card .card-header {
   padding-top: 1rem;
   background-color: #00008B !important;
   border-radius: 1rem 1rem 0 0 !important;
@@ -316,17 +317,17 @@ li {
   font-size: large;
 }
 
-.login-card .card-footer{
+.login-card .card-footer {
   background-color: #00008B !important;
   border-radius: 0 0 1rem 1rem !important;
 }
 
-.login-card .card-footer .forgotpassword:link{
+.login-card .card-footer .forgotpassword:link {
   color: #fff !important;
   font-size: small;
 }
 
-.login-card .card-footer .forgotpassword:hover{
+.login-card .card-footer .forgotpassword:hover {
   color: #fff !important;
   font-size: small;
   text-decoration: underline;
@@ -387,12 +388,12 @@ input:focus {
   text-decoration: underline;
 }
 
-.scam-alert-content{
+.scam-alert-content {
   max-width: 80dvw;
-  margin:auto;
+  margin: auto;
 }
 
-footer{
+footer {
   background-color: #00008B;
 }
 
@@ -406,7 +407,7 @@ footer{
 
 /* for screen SMALLER than 576px */
 @media only screen and (max-width: 576px) {
-    
+
   nav {
     margin: 0;
   }
@@ -454,7 +455,7 @@ footer{
     color: #00008B;
   }
 
-  .scam-alert-content{
+  .scam-alert-content {
     padding-top: 4rem;
   }
 }
@@ -561,6 +562,23 @@ footer{
   margin-left: 0.5rem;
 }
 
+/*register section*/
+#registration-section {
+  max-width: 35rem;
+  margin: 2rem auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  padding:2rem 4rem;
+}
+
+.invalidfb{
+  margin-top: 0.25rem;
+  width: 100%;
+  font-size:  0.775rem;
+  color: var(--bs-form-invalid-color);
+}
+
 /* RESPONSIVE DESIGN */
 
 /* Tablet and Mobile */
@@ -622,6 +640,8 @@ footer{
     display: none;
   }
 
+
+
   /* Mobile adjustments for login */
   .login-card {
     width: 350px;
@@ -633,4 +653,13 @@ footer{
     min-height: calc(100vh - 6rem);
     padding: 1rem 0;
   }
+}
+
+/*Game page style*/
+.header {
+  background: linear-gradient(180deg, #e0e3e6, #ea2f5d);
+}
+
+.header h1 {
+  color: #2c3e50;
 }

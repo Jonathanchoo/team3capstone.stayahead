@@ -1,4 +1,4 @@
-const registerbtn = getElementById('register-submit');
+const registerbtn = document.getElementById('register-submit');
 
 const userEmailSaved = JSON.parse(localStorage.getItem("userEmailString"));
 const userScoreSaved = JSON.parse(localStorage.getItem("userScoreString"));
@@ -7,9 +7,9 @@ function autofill(){
         document.getElementById("emailInput").value = userEmailSaved; 
     }
 };
-autofill();
-alert("ran");
-registerbtn.addEventListener('click', function (event) {
+autofill(); // auto fill email
+
+registerbtn.addEventListener('click', async function (event) {
     event.preventDefault(); 
     const userEmail = document.getElementById('emailInput').value;
     const username = document.getElementById('usernameInput').value;
@@ -34,14 +34,41 @@ registerbtn.addEventListener('click', function (event) {
         return;
     }
 
-    if((!emailRegex.test(repeatpassword))|| repeatpassword === "" || repeatpassword !== "password" ){
+    if(repeatpassword === "" || repeatpassword !== password ){
         document.getElementById('invalidRepeatpassword').classList.remove("d-none");
         return;
     }
 
+    // TODO: send data to backend for validation
+    const formData = { 
+        email: userEmail.value,
+        username: username.value,
+        password: password.value,
+        score: userScoreSaved
+    }
 
-    console.log ("Account Registered");
+    try{
+        const response = await fetch(
+            "https://getform.io/f/aqoexlna" ,
+            {
+                method: "POST",
+                headers:{ "Content-Type": "application/json"},
+                body: JSON.stringify(formData)
+            }
+        );
+
+        if(response.ok){
+            //TODO: Registration success, authentication to go profile page
+            window.location.href = "profile.html";
+
+        } else { 
+            // manage error 400, 403, 500 
+            alert("Registration unsucessful.")
+        }
+    } catch(error){
+        alert("An error has occured. Please try again.")
+    }
     alert("Registration Successful");
-
-    
+    localStorage.removeItem("userEmailString");
+    localStorage.removeItem("userscore");
 });
