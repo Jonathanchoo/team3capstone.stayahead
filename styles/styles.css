@@ -1,17 +1,39 @@
-/* Login Styles - Merged from loginstyles.css */
+/* =========================================================
+   StayAhead - Global Styles 
+   - palette: #00008B navy, #ADD8E6 light, #ea2f5d accent
+   ========================================================= */
+
+/* Google Font (login page) */
 @import url("https://fonts.googleapis.com/css?family=Numans");
 
-/* Universal font and size*/
+/* -------------------------
+   Base / Reset
+-------------------------- */
+:root{
+  --navy: #00008B;
+  --light-blue: #ADD8E6;
+  --pink: #ea2f5d;
+  --white: #fff;
+}
+
 * {
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+html {
   font-size: 16px;
 }
 
+<<<<<<< HEAD
 html,
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 body {
   margin: 0;
   padding: 0;
-  width: 100dvw;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 
@@ -19,8 +41,19 @@ a {
   text-decoration: none;
 }
 
+<<<<<<< HEAD
 
 /* Nav bar */
+=======
+/* Utility */
+li { list-style: none; }
+
+/* -------------------------
+   Navbar / Header
+-------------------------- */
+
+/* Logo */
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .logo {
   backface-visibility: hidden;
   display: flex;
@@ -35,17 +68,24 @@ a {
   border-radius: 48%;
 }
 
+<<<<<<< HEAD
 .logo>a:link {
   color: #fff;
   text-decoration: none;
   font-weight: normal;
+=======
+.logo > a {
+  color: var(--white) !important;
+  text-decoration: none !important;
+  font-weight: 400;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  align-content: center;
 }
 
+<<<<<<< HEAD
 
 nav {
 <<<<<<< HEAD
@@ -53,27 +93,38 @@ nav {
 =======
   background-color: #00008b;
 >>>>>>> 7f5746a (edits for team member card & color)
+=======
+/* Custom top nav wrapper (desktop) */
+nav {
+  background-color: var(--navy);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   display: flex;
   justify-content: space-between;
-  height: 4rem;
   align-items: center;
+  height: 4rem;
+
   margin: 1rem;
   padding: 0 2rem;
   border-radius: 1rem;
 }
 
-.nav-link:link {
+.nav-link {
   color: rgba(255, 255, 255, 0.7);
   padding: 0 1rem;
+<<<<<<< HEAD
   font-size: small;
+=======
+  font-size: 0.875rem;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
 
 
 .nav-link:hover {
-  color: #fff;
+  color: var(--white);
   text-decoration: underline;
 }
 
+<<<<<<< HEAD
 
 .nav-item li {
   display: flex;
@@ -82,18 +133,25 @@ nav {
 }
 
 
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .nav-item a {
-  color: #fff;
+  color: var(--white);
   padding-right: 1rem;
 }
 
+<<<<<<< HEAD
 
+=======
+/* Divider between links (desktop) */
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 nav .nav-item:not(:last-child) .nav-link {
-  border-right: 1px solid #fff;
+  border-right: 1px solid var(--white);
 }
 
 
 .lowernav {
+<<<<<<< HEAD
 <<<<<<< HEAD
   background-color: #00008B;
   margin: 0;
@@ -101,44 +159,52 @@ nav .nav-item:not(:last-child) .nav-link {
 =======
   background-color: #00008b;
 >>>>>>> 7f5746a (edits for team member card & color)
+=======
+  background-color: var(--navy);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
 
-/* Start of About Me section */
+/* Bootstrap navbar tweaks */
+.navbar {
+  z-index: 1050; /* always above content */
+}
 
+.navbar-collapse {
+  border-radius: 0.5rem;
+  transform-origin: top;
+}
 
-/* Gradient from Navy to Blue */
+.navbar-nav .nav-link {
+  color: var(--white) !important;
+}
+
+/* -------------------------
+   About / Our Philosophy
+-------------------------- */
 .ourPhilosophy {
-    background: linear-gradient(180deg, #268bd9 0%, #00008b 15%);
-    color: #fff;
-    padding: 4rem 2rem;
-    text-align: center;
-    border-radius: 0px;
-    margin-bottom: 2rem;
+  background: linear-gradient(180deg, #268bd9 0%, var(--navy) 15%);
+  color: var(--white);
+  padding: 4rem 2rem;
+  text-align: center;
+  border-radius: 1rem;
+  margin: 1rem;
 }
 
 .team-section-title {
-    text-align: center;
-    margin-bottom: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  text-align: center;
+  margin-bottom: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .team-section-title h2 {
-    color: #003366;
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-
-.about-grid {
-  display: flex;
-  gap: 2.5rem;
-  /* Converted from 40px */
-  flex-direction: column;
-  /* align-items: flex-start; */
+  color: #003366;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
 }
 
 <<<<<<< HEAD
@@ -146,13 +212,17 @@ nav .nav-item:not(:last-child) .nav-link {
   font-size: 1.8rem;
 =======
 .about-text > h3 {
+<<<<<<< HEAD
   font-size: x-large;
 >>>>>>> 7f5746a (edits for team member card & color)
   /* Converted from 1.8em */
   font-weight: bold;
   font-style: normal;
+=======
+  font-size: 1.5rem;
+  font-weight: 700;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   margin-bottom: 0.9375rem;
-  /* Converted from 15px */
 }
 
 <<<<<<< HEAD
@@ -160,8 +230,12 @@ nav .nav-item:not(:last-child) .nav-link {
   font-size: x-large;
 =======
 .about-text > p {
+<<<<<<< HEAD
   font-size: medium;
 >>>>>>> 7f5746a (edits for team member card & color)
+=======
+  font-size: 1rem;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
 
 .about-image {
@@ -171,41 +245,41 @@ nav .nav-item:not(:last-child) .nav-link {
 
 .about-image img {
   width: 100%;
-  max-width: 18.75rem;
-  /* Converted from 300px */
+  max-width: 18.75rem; /* 300px */
 }
 
-/* ==================================== */
-/* Social Media Links in card */
-.social-links{
+/* -------------------------
+   Social Links (cards)
+-------------------------- */
+.social-links {
   display: flex;
   justify-content: center;
   gap: 16px;
 }
 
-.social-link{
+.social-link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none;
 }
 
-.social-link i{
+.social-link i {
   font-size: 30px;
   transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Zoom on hover (each link individually) */
-.social-link:hover i{
+.social-link:hover i {
   transform: scale(1.15);
   filter: brightness(1.1);
 }
 
-/* Brand colors */
-.social-link.linkedin i{ color: #0A66C2; } /* LinkedIn */
-.social-link.github i{ color: #111; }      /* GitHub (use #fff for dark bg) */
+.social-link.linkedin i { color: #0A66C2; }
+.social-link.github i { color: #111; }
 
-/* Team Member Card */
+/* -------------------------
+   Team Member Card
+-------------------------- */
 .team-img-wrapper {
   width: 220px;
   height: 220px;
@@ -219,17 +293,17 @@ nav .nav-item:not(:last-child) .nav-link {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center top; 
+  object-position: center top;
   display: block;
 }
 
-
-
-/* End of About Me section */
-
-/*FOOTER */
-
+/* -------------------------
+   Footer
+-------------------------- */
+footer,
+.team3,
 .disclaimer {
+<<<<<<< HEAD
 <<<<<<< HEAD
   display: flex;
   width: 100%;
@@ -251,10 +325,29 @@ nav .nav-item:not(:last-child) .nav-link {
   width: 50%;
   margin: 1rem;
   color: #fff;
+=======
+  background-color: var(--navy);
+}
+
+.disclaimer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.disclaimer > h6 {
+  font-size: 0.625rem; /* xx-small-ish */
+  display: flex;
+  width: 50%;
+  margin: 1rem;
+  color: var(--white);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
 
 
 .team3 {
+<<<<<<< HEAD
 <<<<<<< HEAD
   background-color: #00008B;
   padding-top: 1rem;
@@ -262,19 +355,23 @@ nav .nav-item:not(:last-child) .nav-link {
   background-color: #00008b;
 >>>>>>> 7f5746a (edits for team member card & color)
   color: white;
+=======
+  color: var(--white);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   padding-bottom: 1rem;
 }
 
 
 .team3 h5,
 .team3 p {
-  font-size: small;
+  font-size: 0.875rem;
   display: flex;
   justify-content: center;
   line-height: 0.5rem;
   white-space: nowrap;
 }
 
+<<<<<<< HEAD
 
 /* End of Footer */
 
@@ -282,6 +379,11 @@ nav .nav-item:not(:last-child) .nav-link {
 
 
 /* Hero Section */
+=======
+/* -------------------------
+   Scam Alerts Page
+-------------------------- */
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .hero-section {
   background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
   border-radius: 15px;
@@ -289,8 +391,11 @@ nav .nav-item:not(:last-child) .nav-link {
   margin-bottom: 2rem;
 }
 
+<<<<<<< HEAD
 
 /* Statistics Alert Card */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .stat-card {
   background: #fff3cd;
   border-left: 4px solid #dc3545;
@@ -307,10 +412,13 @@ nav .nav-item:not(:last-child) .nav-link {
   margin-bottom: 0.5rem;
 }
 
+<<<<<<< HEAD
 
 /* Key Defense Points */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .key-points {
-  background: #fff;
+  background: var(--white);
   border: 2px solid #0d6efd;
   border-radius: 10px;
   padding: 1.5rem;
@@ -321,14 +429,22 @@ nav .nav-item:not(:last-child) .nav-link {
 .key-points ul {
   display: flex;
   flex-direction: column;
-  background-color: #00008B;
-  color: #fff;
-  border-top: #fff 5px solid;
+  background-color: var(--navy);
+  color: var(--white);
+  border-top: 5px solid var(--white);
 }
 
-/*End of Footer */
+.scam-alert-content {
+  max-width: 80dvw;
+  margin: auto;
+}
+
+/* -------------------------
+   Landing Section
+-------------------------- */
 .landing {
   display: flex;
+<<<<<<< HEAD
   background: linear-gradient(to bottom,
       #00008B,
       /* Starting color (top) - Dark Blue */
@@ -337,21 +453,34 @@ nav .nav-item:not(:last-child) .nav-link {
     );
   color: #fff;
   border-top: #fff 5px solid;
+=======
+  background: linear-gradient(to bottom, var(--navy), var(--light-blue));
+  color: var(--white);
+  border-top: 5px solid var(--white);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   margin: 1rem;
   border-radius: 1rem;
 }
 
 .landing h2 {
+<<<<<<< HEAD
   font-weight: bolder;
+=======
+  font-weight: 800;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   padding-left: 1rem;
 }
 
 .landing p {
+<<<<<<< HEAD
   font-weight: light;
+=======
+  font-weight: 300;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   padding-left: 1rem;
 }
 
-*.landingimgcontainer {
+.landingimgcontainer {
   display: flex;
   justify-content: flex-end;
 }
@@ -360,7 +489,6 @@ nav .nav-item:not(:last-child) .nav-link {
   display: flex;
   border-radius: 50%;
   overflow: hidden;
-  margin: 1rem;
   object-fit: cover;
   width: 100%;
   height: auto;
@@ -368,40 +496,48 @@ nav .nav-item:not(:last-child) .nav-link {
   margin: 2rem 0;
 }
 
+/* -------------------------
+   Buttons
+-------------------------- */
 .btn-primary {
   border: none !important;
+<<<<<<< HEAD
   background-color: #ea2f5d !important;
+=======
+  background-color: var(--pink) !important;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
 
 .btn-primary:hover {
   border: none !important;
-  color: #ea2f5d !important;
-  background-color: #fff !important;
+  color: var(--pink) !important;
+  background-color: var(--white) !important;
 }
 
 .btn-outline-danger {
   border: none;
-  --bs-btn-color: #ea2f5d;
+  --bs-btn-color: var(--pink);
 }
 
 .btn-outline-danger:hover {
-  background-color: #ea2f5d !important;
-}
-
-li {
-  list-style: none;
+  background-color: var(--pink) !important;
 }
 
 .text-block {
-  color: #ea2f5d;
+  color: var(--pink);
 }
 
+/* -------------------------
+   Login Page
+-------------------------- */
 .login-background {
-  /* background-image: url("http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg"); */
   background-size: cover;
   background-repeat: no-repeat;
   min-height: calc(100vh - 8rem);
+<<<<<<< HEAD
   /* Adjust height to account for header/footer */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   font-family: "Numans", sans-serif;
   display: flex;
   align-items: center;
@@ -412,14 +548,15 @@ li {
 }
 
 .login-card {
-  height: 370px;
-  margin-top: auto;
-  margin-bottom: auto;
   width: 400px;
+  height: 370px;
+  margin: auto;
   border-radius: 1rem;
   background-color: rgba(155, 155, 155, 0.1) !important;
+  position: relative;
 }
 
+<<<<<<< HEAD
 .login-card .social_icon span {
   padding-top: 0.7rem;
   padding-right: 0.5rem;
@@ -433,19 +570,21 @@ li {
   cursor: pointer;
 }
 
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .login-card .card-header {
   padding-top: 1rem;
-  background-color: #00008B !important;
+  background-color: var(--navy) !important;
   border-radius: 1rem 1rem 0 0 !important;
 }
 
-
 .login-card .card-header h3 {
-  color: #fff;
-  font-size: large;
+  color: var(--white);
+  font-size: 1.125rem;
 }
 
 .login-card .card-footer {
+<<<<<<< HEAD
   background-color: #00008B !important;
   border-radius: 0 0 1rem 1rem !important;
 }
@@ -459,58 +598,109 @@ li {
   color: #fff !important;
   font-size: small;
   text-decoration: underline;
+=======
+  background-color: var(--navy) !important;
+  border-radius: 0 0 1rem 1rem !important;
 }
 
+/* Make header the positioning anchor */
+.login-card .card-header {
+  position: relative;
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
+}
+
+/* Icons sit inside header, top-right, vertically centered */
 .login-card .social_icon {
   position: absolute;
-  right: 20px;
-  top: -45px;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Circle buttons */
+.login-card .social_icon .social-btn {
+  width: 36px;
+  height: 36px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+
+  transition: transform 160ms ease, background 160ms ease;
+}
+
+.login-card .social_icon .social-btn i {
+  font-size: 16px;
+  line-height: 1;
+  color: #fff;
+}
+
+.login-card .social_icon .social-btn:hover {
+  transform: scale(1.08);
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.login-card .card-footer .forgotpassword:link {
+  color: var(--white) !important;
+  font-size: 0.875rem;
+}
+
+.login-card .card-footer .forgotpassword:hover {
+  color: var(--white) !important;
+  text-decoration: underline;
 }
 
 .input-group-prepend span {
   width: auto;
   height: 100%;
   background-color: #ffc312;
-  color: black;
+  color: #000;
   border: 0 !important;
 }
 
 input:focus {
-  outline: 0 0 0 0 !important;
-  box-shadow: 0 0 0 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
 }
 
 
 
 .login_btn {
-  color: #fff;
-  background-color: #00008B;
+  color: var(--white);
+  background-color: var(--navy);
   width: 100px;
 }
 
 .login_btn:hover {
-  color: #fff;
-  background-color: #ea2f5d;
+  color: var(--white);
+  background-color: var(--pink);
 }
 
 .login-card .links {
-  color: white;
-  font-size: small;
+  color: var(--white);
+  font-size: 0.875rem;
 }
 
 .login-card .links a {
   margin-left: 4px;
   color: #ffc312;
-  font-size: small;
+  font-size: 0.875rem;
   text-decoration: underline;
 }
 
 .login-card .links a:hover {
-  color: white;
-  font-size: small;
-  text-decoration: underline;
+  color: var(--white);
 }
 
+<<<<<<< HEAD
 .scam-alert-content {
   max-width: 80dvw;
   margin: auto;
@@ -787,6 +977,11 @@ footer {
 
 
 /* Section Headers */
+=======
+/* -------------------------
+   Section Headers / Resource Cards
+-------------------------- */
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .section-header {
   text-align: center;
   margin: 3rem 0 2rem 0;
@@ -795,15 +990,18 @@ footer {
 
 .section-header h2 {
   font-size: 2rem;
-  font-weight: bold;
+  font-weight: 700;
   color: #212529;
   margin-bottom: 0.5rem;
 }
 
+<<<<<<< HEAD
 
 /* Resource Cards */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .resource-card {
-  background: #ffffff;
+  background: var(--white);
   border: 1px solid #dee2e6;
   border-radius: 12px;
   padding: 1.5rem;
@@ -836,8 +1034,11 @@ footer {
   font-weight: 500;
 }
 
+<<<<<<< HEAD
 
 /* Individual Resource Items */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .resource-item {
   background: #f8f9fa;
   border-radius: 8px;
@@ -882,17 +1083,21 @@ footer {
   margin-top: 0.2rem;
 }
 
+<<<<<<< HEAD
 
 /* Badges */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 .badge-new {
   background: #dc3545;
-  color: white;
+  color: var(--white);
   font-size: 0.75rem;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   margin-left: 0.5rem;
 }
 
+<<<<<<< HEAD
 /*register section*/
 #registration-section {
   max-width: 34rem;
@@ -911,20 +1116,18 @@ footer {
 }
 
 /* RESPONSIVE DESIGN */
+=======
+/* =========================================================
+   Responsive
+   ========================================================= */
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 
-/* Tablet and Mobile */
-@media only screen and (max-width: 768px) {
-  .hero-section {
-    padding: 2rem 1rem;
-  }
-
-  .resource-card {
-    margin-bottom: 2rem;
-  }
-
-  .stat-card {
+/* >= 576px */
+@media (min-width: 576px) {
+  .text-block {
     text-align: center;
   }
+<<<<<<< HEAD
 
   .stat-card .btn {
     margin-top: 1rem;
@@ -946,14 +1149,25 @@ footer {
   .hero-section h1 {
     font-size: 1.75rem;
   }
+=======
+}
 
-  .resource-card h2 {
-    font-size: 1.5rem;
-  }
+/* <= 768px */
+@media (max-width: 768px) {
+  .hero-section { padding: 2rem 1rem; }
+  .resource-card { margin-bottom: 2rem; }
+  .stat-card { text-align: center; }
+  .stat-card .btn { margin-top: 1rem; }
+  .key-points { padding: 1rem; }
+  .resource-item .description { margin-left: 0; }
+}
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 
-  .section-header h2 {
-    font-size: 1.5rem;
-  }
+/* Mobile */
+@media (max-width: 40rem) {
+  .hero-section h1 { font-size: 1.75rem; }
+  .resource-card h2 { font-size: 1.5rem; }
+  .section-header h2 { font-size: 1.5rem; }
 
   nav {
     flex-direction: column;
@@ -961,10 +1175,9 @@ footer {
     padding: 1rem 0;
   }
 
-  .nav-item a {
-    font-size: 0.875rem;
-  }
+  .nav-item a { font-size: 0.875rem; }
 
+<<<<<<< HEAD
   .content {
     padding-top: 7rem;
   }
@@ -975,6 +1188,8 @@ footer {
 
 
   /* Mobile adjustments for login */
+=======
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
   .login-card {
     width: 350px;
     height: auto;
@@ -988,6 +1203,7 @@ footer {
 
 
 }
+<<<<<<< HEAD
 <<<<<<< HEAD
 
 #formSignup {
@@ -1237,4 +1453,162 @@ footer {
   }
 =======
 >>>>>>> 8864e36 (fix typo in css)
+=======
+
+/* =========================================================
+   Mobile navbar + burger dropdown (FINAL, single source of truth)
+   ========================================================= */
+@media (max-width: 576px) {
+  /* Hide desktop-only */
+  .non-mobile { display: none; }
+  .mobile { text-align: center; }
+
+  /* remove desktop nav spacing on mobile */
+  nav {
+    margin: 0 !important;
+    background: transparent;
+    border-radius: 0;
+    padding: 0;
+  }
+
+  /* fixed navbar stays on top */
+  .mobile .navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 3000;
+  }
+
+  /* page offset for fixed navbar */
+  body {
+    padding-top: 64px !important; /* set 56px if you want tighter */
+  }
+
+  .lowernav { display: none; }
+
+  /* blue pill background behind navbar content */
+  .mobile-nvbg {
+    background-color: var(--navy);
+    border-radius: 0.5rem;
+    box-shadow: 0px 6px 10px rgba(78, 81, 176, 0.1);
+  }
+
+  /* dropdown positions relative to navbar */
+  .mobile .navbar .container-fluid { position: relative; }
+
+  /* dropdown glass panel */
+  .mobile .navbar-collapse {
+    position: absolute;
+    top: calc(100% + 6px);
+    left: 0;
+    right: 0;
+
+    padding: 0.35rem 0.4rem !important;
+    border-radius: 0.75rem !important;
+
+    background: rgba(173, 216, 230, 0.42) !important;
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    border: 1px solid rgba(255, 255, 255, 0.38) !important;
+    box-shadow: 0 10px 22px rgba(0, 0, 139, 0.12) !important;
+
+    z-index: 3001;
+  }
+
+  .mobile .navbar-nav {
+    gap: 0.2rem;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .mobile .navbar-nav .nav-link {
+    padding: 0.42rem 0.65rem !important;
+    font-size: 0.92rem !important;
+    font-weight: 600;
+    border-radius: 999px !important;
+
+    color: rgba(0, 0, 139, 0.95) !important;
+    text-decoration: none !important;
+    transition: background 140ms ease;
+  }
+
+  .mobile .navbar-nav .nav-link:hover {
+    background: rgba(0, 0, 139, 0.10) !important;
+  }
+
+  .mobile .navbar-nav .nav-link.active {
+    background: rgba(234, 47, 93, 0.16) !important;
+  }
+
+  /* your existing mobile layout tweaks */
+  .landing {
+    padding-top: 7rem;
+    border: none;
+  }
+
+  .scam-alert-content {
+    padding-top: 4rem;
+  }
+
+  .key-points li {
+    text-align: center;
+    width: 100%;
+  }
+}
+
+/* =========================================================
+   Burger icon animation (kept)
+   NOTE: ensure your HTML includes:
+   <span class="navbar-toggler-icon"><span></span></span>
+   ========================================================= */
+.navbar-toggler {
+  border: 0 !important;
+  padding: 0.5rem 0.6rem;
+  box-shadow: none !important;
+}
+
+.navbar-toggler:focus {
+  box-shadow: none !important;
+}
+
+.navbar-toggler .navbar-toggler-icon {
+  background-image: none !important;
+  width: 26px;
+  height: 18px;
+  position: relative;
+  display: inline-block;
+}
+
+.navbar-toggler .navbar-toggler-icon::before,
+.navbar-toggler .navbar-toggler-icon::after,
+.navbar-toggler .navbar-toggler-icon span {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 999px;
+  transition: transform 220ms ease, top 220ms ease, opacity 160ms ease;
+}
+
+.navbar-toggler .navbar-toggler-icon span { top: 8px; }
+.navbar-toggler .navbar-toggler-icon::before { top: 0; }
+.navbar-toggler .navbar-toggler-icon::after { top: 16px; }
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+  top: 8px;
+  transform: rotate(45deg);
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon span {
+  opacity: 0;
+}
+
+.navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+  top: 8px;
+  transform: rotate(-45deg);
+>>>>>>> 8f8e109 (edit to burger, css, social links & consistency)
 }
