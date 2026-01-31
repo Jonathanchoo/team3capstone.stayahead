@@ -14,6 +14,20 @@
 </head>
 
 <body>
+    <!-- toast -->
+    <!-- https://getbootstrap.com/docs/5.3/components/toasts/ --> 
+    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
+        <!-- Put toasts within -->
+        <div id="msg-toast" class="toast align-items-center mt-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="4000">
+            <div class="d-flex">
+                <div id="msg-toast-body" class="toast-body"> 
+                <!-- Message to be added here -->
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
     <!--Nav bar-->
     <section class="non-mobile">
         <nav>
@@ -79,41 +93,39 @@
             <h3> Get Ahead </h3>
                 <h1> StayAhead </h1>
             </div>
-        <form class="needs-validation col" novalidate>
+        <form id="formSignup" class="needs-validation col" novalidate>
             <div class="col-md-12 mb-3">
-                <label class="form-label mw-100">Email</label>
+                <label for="txtEmail" class="form-label mw-100">Email</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="emailInput" aria-describedby="inputGroupPrepend2"
-                        placeholder="johnCena@hotmail.com" required>
+                    <input type="text" class="form-control" id="txtEmail" aria-describedby="inputGroupPrepend2"
+                        placeholder="johncena@hotmail.com" required>
+                        <div class="invalid-feedback text-danger">
+                            Please enter a valid email.
+                        </div>
                 </div>
-                <div class="d-none invalidfb" id="invalidEmail"> Please enter a valid email</div>
             </div>
-            <div class="col-md-9 mb-3">
-                <label for="usernameInput" class="form-label">Username</label>
+            <div class="col-md-12 mb-3">
+                <label for="txtPassword" class="form-label">Password</label>
                 <div class="input-group">
-                    <input type="text" class="form-control" id="usernameInput" aria-describedby="inputGroupPrepend2"
+                    <input type="password" class="form-control" id="txtPassword" aria-describedby="inputGroupPrepend2"
                         required>
+                    <div class="invalid-feedback text-danger">
+                            Please enter a valid password.
+                    </div>
                 </div>
-                <div class="d-none invalidfb" id="invalidUsername"> Please enter a valid username</div>
             </div>
-            <div class="col-md-9 mb-3">
-                <label for="passwordInput" class="form-label">Password</label>
+            <div class="col-md-12 mb-3">
+                <label for="txtRepeatPassword" class="form-label">Repeat Password</label>
                 <div class="input-group">
-                    <input type="password" class="form-control" id="passwordInput" aria-describedby="inputGroupPrepend2"
-                        required>
-                </div>
-                <div class="d-none invalidfb" id="invalidPassword" > Please include at least an uppercase & lowercase, number and a special characters</div>
-            </div>
-            <div class="col-md-9 mb-3">
-                <label for="repeatPasswordInput" class="form-label">Repeat Password</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="repeatPasswordInput"
+                    <input type="password" class="form-control" id="txtRepeatPassword"
                         aria-describedby="inputGroupPrepend2" required>
+                    <div class="invalid-feedback text-danger">
+                        Passwords are not the same. Please check.
+                    </div>
                 </div>
-                <div class="d-none invalidfb" id="invalidRepeatpassword" > Please check your Repeat Password</div>
             </div>
             <div class="col-12 m-3 p-4 d-flex flex-row-reverse">
-                <button class="btn btn-primary" type="submit" id="register-submit"> Register</button>
+                <button class="btn btn-primary" type="submit" id="btnSignup"> Register</button>
             </div>
         </form>
 
@@ -170,7 +182,71 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
         </script>
-    <script src="assets\register.js"></script>
+        
+    <!-- Scripts for authentication and notifications -->
+    <script src="script/const.js"></script>
+    <script src="script/auth.js"></script>
+    <script src="script/components/Spinner.js"></script>
+    <script src="script/loader.js"></script>
+    
+    <script src="script/boostrap-ftns.js"></script>
+    <script src="script/form-validate.js"></script>
+
+    <!-- Internal Custom Script -->
+    <script>
+
+        // Custom JS statements and function
+        document.getElementById("formSignup").addEventListener("submit", async (event) => {
+            
+            event.preventDefault();                                                 // Prevent default browser events from happening
+
+            const email = document.getElementById("txtEmail");                      // Create constant variables to capture form inputs - txtEmail
+            const pwd = document.getElementById("txtPassword");                     // Create constant variables to capture form inputs - txtPassword
+            const repeat_pwd = document.getElementById("txtRepeatPassword");        // Create constant variables to capture form inputs - txtRepeatPassword
+
+            const toastElement = document.getElementById("msg-toast");              // Get the toast element - msg-toast
+            const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
+            
+            if(isEmpty(email.value) || isEmpty(pwd.value) || isEmpty(repeat_pwd.value)){ // Trap empty inputs for txtEmail and txtPassword - isEmpty()
+                showToast({toastElement, 
+                        toastBodyElement,
+                        bgColor: "danger", msg: "All inputs must not be empty."});
+                return;
+            }
+            
+            if(!isEmail(email.value)){                                              // Trap invalid email for txtEmail - isEmail()
+                showToast({toastElement, 
+                        toastBodyElement, 
+                        bgColor:"danger", msg: "Email is invalid."});
+                return;
+            }
+
+            if (repeat_pwd.value !== pwd.value) {
+                showToast({toastElement, 
+                        toastBodyElement, 
+                        bgColor:"danger", msg: "Password not the same."});
+                return;
+            }
+
+            spinner.createSpinner("btnSignup");                                     // Create the spinner, apply it to btnLogin
+            spinner.displaySpinner(true);
+            
+            const formData = {                                                      // JavaScript Object formData stores the form's input values
+                email: email.value, 
+                password: pwd.value
+            };           
+            
+            const signupSuccess = await signup(formData);                             // Invoke login() function, and end (return)
+            
+            if(!signupSuccess){
+                spinner.displaySpinner(false);                                                                          // If login unsuccessful, hide spinner
+                showToast({toastElement, toastBodyElement, bgColor: "danger", msg: "Unable to log in. Try again."});    // If login unsuccessful, provide feeback
+            }
+
+        });
+
+    </script>
+
 </body>
 
 </html>

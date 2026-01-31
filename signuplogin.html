@@ -14,6 +14,21 @@
 </head>
 
 <body>
+
+    <!-- toast -->
+    <!-- https://getbootstrap.com/docs/5.3/components/toasts/ --> 
+    <div class="toast-container p-3 top-0 start-50 translate-middle-x">
+        <!-- Put toasts within -->
+        <div id="msg-toast" class="toast align-items-center mt-2" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true" data-bs-delay="4000">
+            <div class="d-flex">
+                <div id="msg-toast-body" class="toast-body"> 
+                <!-- Message to be added here -->
+                </div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
     <!--Nav bar-->
     <section class="non-mobile">
         <nav>
@@ -84,24 +99,35 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <form>
+                        <form id="formLogin" class="needs-validation col" novalidate>
                             <div class="d-flex mb-2">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text me-2"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" class="form-control" placeholder="username">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="txtEmail" aria-describedby="inputGroupPrepend2"
+                                        placeholder="johncena@hotmail.com" required>
+                                        <div class="invalid-feedback text-danger">
+                                            Please enter a valid email.
+                                        </div>
+                                </div>
                             </div>
                             <div class="d-flex mb-2">
                                 <div class="input-group-prepend me-2">
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
-                                <input type="password" class="form-control" placeholder="password">
-                            </div>
-                            <div class="row align-items-center text-dark remember mb-4">
-                                <input type="checkbox">Remember Me
+                                <div class="input-group">
+                                    <input type="password" class="form-control" id="txtPassword" aria-describedby="inputGroupPrepend2"
+                                        required>
+                                    <div class="invalid-feedback text-danger">
+                                            Please enter a valid password.
+                                    </div>
+                                </div>
                             </div>
                             <div class="form-group">
-                                <input type="submit" value="Login" class="btn login_btn">
+                                <button type="submit" id="btnLogin" value="Login" class="btn login_btn">
+                                    Send
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -175,7 +201,60 @@
     <!--Boostrap Javascript Library-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
+    </script>
+
+    <!-- Scripts for authentication and notifications -->
+    <script src="script/const.js"></script>
+    <script src="script/auth.js"></script>
+    <script src="script/components/Spinner.js"></script>
+    <script src="script/loader.js"></script>
+    
+    <script src="script/boostrap-ftns.js"></script>
+    <script src="script/form-validate.js"></script>
+
+        <!-- Internal Custom Script -->
+    <script>
+
+        // Custom JS statements and function
+        document.getElementById("formLogin").addEventListener("submit", async (event) => {
+
+            event.preventDefault();                                                 // Prevent default browser events from happening
+
+            const email = document.getElementById("txtEmail");                      // Create constant variables to capture form inputs - txtEmail
+            const pwd = document.getElementById("txtPassword");                     // Create constant variables to capture form inputs - txtPassword
+
+            const toastElement = document.getElementById("msg-toast");              // Get the toast element - msg-toast
+            const toastBodyElement = document.getElementById("msg-toast-body");     // Get the toast element - msg-toast-body
+            
+            if(isEmpty(email.value) || isEmpty(pwd.value)){                         // Trap empty inputs for txtEmail and txtPassword - isEmpty()
+                showToast({toastElement, 
+                        toastBodyElement,
+                        bgColor: "danger", msg: "All inputs must not be empty."});
+                return;
+            }
+            
+            if(!isEmail(email.value)){                                              // Trap invalid email for txtEmail - isEmail()
+                showToast({toastElement, 
+                        toastBodyElement, 
+                        bgColor:"danger", msg: "Email is invalid."});
+                return;
+            }
+
+            spinner.createSpinner("btnLogin");                                      // Create the spinner, apply it to btnLogin
+            spinner.displaySpinner(true);
+
+            const formData = { email: email.value, password: pwd.value };           // JavaScript Object formData stores the form's input values
+            
+            const loginSuccess = await login(formData);                             // Invoke login() function, and end (return)
+            
+            if(!loginSuccess){
+                spinner.displaySpinner(false);                                                                          // If login unsuccessful, hide spinner
+                showToast({toastElement, toastBodyElement, bgColor: "danger", msg: "Unable to log in. Try again."});    // If login unsuccessful, provide feeback
+            }
+
+        });
+
+    </script>
 </body>
 
 </html>
