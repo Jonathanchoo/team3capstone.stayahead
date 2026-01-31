@@ -60,89 +60,71 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarsExample01">
                     <ul class="navbar-nav me-auto mb-2 ">
-                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link" aria-current="page" href="index.html">Home</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="scamalerts.html">Scam Alerts</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="game.html">Game</a> </li>
-                        <li class="nav-item"> <a class="nav-link" href="signuplogin.html">Signup/Login</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" href="signuplogin.html">Signup/Login</a> </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </section>
     <!--This is the middle part, insert your page content here-->
-    <!--TODO add your section here-->
-    <!--landing page-->
-    <header class="landing">
-        <div class="landingtextcontainer align-content-center col-5">
-            <div class="ms-md-5 m-2">
-                <h2 class="">Plan ahead<br>Live with peace of mind</h2>
-                <p class="d-md-flex d-none">Lorem, ipsum dolor sit amet consectetur adipisicing elit.</p>
+    <div class="login-background">
+        <div class="container login-container">
+            <div class="d-flex justify-content-center h-100">
+                <div class="card login-card">
+                    <div class="card-header">
+                        <h3>Sign In</h3>
+                        <div class="d-flex justify-content-end social_icon">
+                            <span><i class="fab fa-facebook-square"></i></span>
+                            <span><i class="fab fa-google-plus-square"></i></span>
+                            <span><i class="fab fa-twitter-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="d-flex mb-2">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text me-2"><i class="fas fa-user"></i></span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="username">
+                            </div>
+                            <div class="d-flex mb-2">
+                                <div class="input-group-prepend me-2">
+                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                </div>
+                                <input type="password" class="form-control" placeholder="password">
+                            </div>
+                            <div class="row align-items-center text-dark remember mb-4">
+                                <input type="checkbox">Remember Me
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn login_btn">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="card-footer">
+                        <div class="d-flex justify-content-center links">
+                            Don't have an account?<a href="#">&nbsp;Sign up here.</a>
+                        </div>
+                        <div class="d-flex pt-2 justify-content-center">
+                            <a class="forgotpassword" href="#">Forgot password?</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex flex-md-row flex-column w-75 mx-auto">
-                <a class="btn btn-primary justify-content-center m-2">Create Account</a>
-                <a class="btn btn-outline-danger bg-white justify-content-center m-2">Learn more</a>
-            </div>
         </div>
-        <div class="landingimgcontainer col-7">
-            <img class="landingimg img-fluid me-4" src="assets/images/thinking.jpg" alt="thinking">
-        </div>
-    </header>
-    <!--Content link-->
-    <!--Todo all anchor links and alts-->
-    <section>
-        <ul class="cards-container d-sm-flex align-content-center align-content-center ps-0 mx-sm-5">
-            <li class="landing-cards col-sm-4 pt-4 pb-4 flex-column">
-                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
-                    <button type="button" class="btn btn-secondary btn-lg mx-5">
-                        <i class="fa-solid fa-triangle-exclamation"></i>
-                    </button>
-                    <div class="text-block">
-                        <a class="card-title">Scam Alerts</a>
-                        <p class="card-text">Latest scoop on what are they cooking up</p>
-                    </div>
-                </div>
-            </li>
-            <li class="landing-cards col-sm-4 pt-4 pb-4">
-                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
-                    <button type="button" class="btn btn-secondary btn-lg mx-5">
-                        <i class="fa-solid fa-book-open"></i>
-                    </button>
-                    <div class="text-block">
-                        <a class="card-title">Best Practices</a>
-                        <p class="card-text">Prevention is better than Cure</p>
-                    </div>
-                </div>
-            </li>
-            <li class="landing-cards col-sm-4 pt-4 pb-4">
-                <div class="d-flex flex-row flex-sm-column align-items-center justify-content-start">
-                    <button type="button" class="btn btn-secondary btn-lg mx-5">
-                        <i class="fa-solid fa-magnifying-glass"></i>
-                    </button>
-                    <div class="text-block">
-                        <a class="card-title">Spot the Fraud</a>
-                        <p class="card-text">Training Ground!</p>
-                    </div>
-                </div>
-            </li>
-        </ul>
-        <!--Quote section-->
-        <div>
-            <figure class="text-center col-sm-5 m-sm-auto m-3">
-                <blockquote class="blockquote">
-                    <p>Most scams are absurd - so absurd that one wonders how anyone falls for them at all;
-                        yet if no one falls for them, how do the scammers make money?
-                    </p>
-                </blockquote>
-                <figcaption class="blockquote-footer">
-                    by <cite title="Source Title">James Veitch</cite>
-                </figcaption>
-            </figure>
-            <h2>
-            </h2>
-        </div>
-    </section>
+    </div>
 
+    <!--END Middle Part-->
+    <!-- <section class="content">
+        <div>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rerum, tenetur! Facere, quia! 
+            Eveniet itaque eaque sit reiciendis officiis odio blanditiis eos ab veritatis voluptatem quidem sint consectetur autem, expedita quis! 
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Explicabo possimus suscipit, 
+            rem cumque iure incidunt autem laborum, dicta vitae voluptate rerum? Distinctio debitis libero amet maxime provident blanditiis quia iusto!
+    </section> -->
     <!--Footer start here-->
     <!--Footer nav links-->
     <footer>
@@ -168,7 +150,7 @@
             </nav>
         </div>
         <!--Disclaimer section-->
-        <div class="bg-primary">
+        <div>
             <div class="disclaimer justify-content-center">
                 <h6 class="text-center">
                     DISCLAIMERS: Information on this site is for general education only and does not constitute
@@ -181,8 +163,8 @@
         <!--Organization & Copyright-->
         <div class="team3">
             <div>
-                <h5 class=class="card-footer text-body-secondary justify-content-center">JFSD07 Team 3, Generation Singapore.</h5>
-                <p> In partnership with Microsoft & Temasek Poly.</p>
+                <h5 class=class="card-footer text-body-secondary justify-content-center">JFSD07 Team 3</h5>
+                <p> by Generation Singapore in partnership with Microsoft & Temasek Poly</p>
             </div>
             <div>
                 <h5>&copy; 2025 StayAhead &trade; All rights reserved</h5>
