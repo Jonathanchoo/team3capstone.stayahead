@@ -86,28 +86,7 @@ const quizData = [
 ];
 //TODO : pull highscore from database
 // temporary highscore
-let highScore = [
-    {
-        userId: "john",
-        score: 140,
-    },
-    {
-        userId: "tom",
-        score: 50,
-    },
-    {
-        userId: "mary",
-        score: 120,
-    },
-    {
-        userId: "dick",
-        score: 110,
-    },
-    {
-        userId: "harry",
-        score: 130,
-    },
-];
+let highScore = [];
 
 let currentQuestion = 0;
 let score = 0;
@@ -178,7 +157,7 @@ function selectOption(index) {
 function nextQuestion() {
     currentQuestion++;
 
-    if (currentQuestion < 10) { //qns to end page ,adjust here
+    if (currentQuestion < 3) { //TODO: qns to end page ,adjust here 
         loadQuestion();
     } else {
         const endTime = performance.now();  // stop bonus timer
@@ -186,54 +165,66 @@ function nextQuestion() {
         showResults();
     }
 }
-// TODO : send score to backend to update, sort then pull for use
-function updateHighscore() {
-    highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );   // sort score by decending order
-    let totalScore = score + bonusPoints
-    if (totalScore > highScore[4].score){                //compare score of 5th place, replace if greater
-    let userEmail = document.getElementById('userEmail').value;
-    highScore[4].score = totalScore;
-    highScore[4].userId = userEmail;
-    }
-    highScore = highScore.sort((a, b) => a.score > b.score ? -1 : 1 );
-}
-/* 
+
 async function updateHighscore() {
     let totalScore = score + bonusPoints;
-    let userId = document.getElementById('userId').value;
+    let userEmail = document.getElementById('userEmail').value;
 
-    const newHighscore = {
-        userId: userId,
-        score: totalScore,
-        timestamp: Date.now()
-    };
+    const formData = new FormData();
+
+    formData.append("email", userEmail);
+    formData.append("score", totalScore);
 
     try {
-        const response = await fetch('XXXX-API-domain.com', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(newHighscore)
+        const response = await fetch(_ENDPOINT_UPDATE_HIGHSCORE, {
+            method: 'PUT',
+            body: formData
         });
 
         if (response.ok) {
-            const updatedHighscore = await response.json(); 
-            highscore = updatedHighscore ;
+            const userResult = await response.json(); 
+            document.getElementById('scoreUpdate').innerText = userResult.message;
         } 
     } catch (error) {
-       document.getElementById('scoreUpdate').textContent =  ' Error Occurred while Updating highscore' ;
+        console.log(error);
+       document.getElementById('scoreUpdate').textContent =  'An error occured updating the score. Try again later.' ;
     }
 }
-*/
-//backend verify score within max possible limit,save score to data base
 
-function printHighscore(){      // update the leaderboard with the new scores
+//backend verify score within max possible limit,save score to data base
+async function printHighscore(){      // update the leaderboard with the new scores
+    
+    let leaderboardtableId = document.querySelectorAll('.tableid');
     let leaderboardId = document.querySelectorAll('.leaderid');
     let leaderboardScore = document.querySelectorAll('.leaderscore');
-    for (let i = 0; i < highScore.length; i++) {
-        leaderboardId[i].textContent = highScore[i].userId;
-        leaderboardScore[i].textContent = highScore[i].score;
+
+    try {
+        const response = await fetch(_ENDPOINT_TOPFIVE, {
+            method: 'GET',
+        });
+
+        if (response.ok) {
+            const top5 = await response.json(); 
+
+            const sortedTop5 = Object.fromEntries(Object.entries(top5).sort(([, a], [, b]) => b - a)); // Use 'b - a' for descending
+  
+            Object.entries(sortedTop5).forEach(([email, score], index) => {
+                leaderboardtableId[index].textContent = index + 1;
+                leaderboardId[index].textContent = maskEmail(email);
+                leaderboardScore[index].textContent = score;
+            });
+        } 
+    } catch (error) {
+       document.getElementById('scoreUpdate').textContent =  'An error occured updating the score. Try again later.' ;
     }
 }
+
+function maskEmail(email) {
+    // Replaces the 4 characters before the @ with ****
+    return email.replace(/(.{2})@/, '**@');
+}
+
+
 
 function showResults() {
     updateHighscore();
@@ -303,3 +294,4 @@ startbtn.addEventListener('click', function () {
     document.getElementById('prequiz-section').classList = 'd-none'; // remove display of pre-quiz notice
     startTime = performance.now(); //start timer
 });
+

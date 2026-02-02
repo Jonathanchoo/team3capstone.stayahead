@@ -134,7 +134,7 @@
             </div>
 
             <div class="button-group mt-4">
-                <button class="btn-custom btn-next fw-semibold d-none" id="next-btn" disabled>Next Question</button>
+                <button class="btn-custom btn-next fw-semibold d-none mb-4" id="next-btn" disabled>Next Question</button>
             </div>
         </div>
 
@@ -155,36 +155,36 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <th scope="row">1</td>
-                            <td class="leaderid">Player One</td>
-                            <td class="leaderscore">1500</td>
+                            <th class="tableid" scope="row"> - </td>
+                            <td class="leaderid"> - </td>
+                            <td class="leaderscore"> - </td>
                         </tr>
                         <tr id="second">
-                            <th scope="row">2</td>
-                            <td class="leaderid">Player Two</td>
-                            <td class="leaderscore">1200</td>
+                            <th class="tableid" scope="row"> - </td>
+                            <td class="leaderid"> - </td>
+                            <td class="leaderscore"> - </td>
                         </tr>
                         <tr id="third">
-                            <th scope="row">3</td>
-                            <td class="leaderid">Player Three</td>
-                            <td class="leaderscore">950</td>
+                            <th class="tableid" scope="row"> - </td>
+                            <td class="leaderid"> - </td>
+                            <td class="leaderscore"> - </td>
                         </tr>
                         <tr id="fourth">
-                            <th scope="row">4</td>
-                            <td class="leaderid">Player Four</td>
-                            <td class="leaderscore">800</td>
+                            <th class="tableid" scope="row"> - </td>
+                            <td class="leaderid"> - </td>
+                            <td class="leaderscore"> - </td>
                         </tr>
                         <tr id="fifth">
-                            <th scope="row">5</td>
-                            <td class="leaderid">Player Five</td>
-                            <td class="leaderscore">720</td>
+                            <th class="tableid" scope="row"> - </td>
+                            <td class="leaderid"> - </td>
+                            <td class="leaderscore"> - </td>
                         </tr>
                     </tbody>
                 </table>
-                <div id="scoreUpdate"></div>
+                <div class="py-3" id="scoreUpdate"></div>
             </div>
-            <button class="btn-custom fw-semibold btn-restart" id="register-btn"> Register </button>
-            <button class="btn-custom fw-semibold btn-restart" id="restart-btn"> Try Again </button>
+            <button class="btn-custom fw-semibold btn-restart mb-4" id="register-btn"> Register </button>
+            <button class="btn-custom fw-semibold btn-restart mb-4" id="restart-btn"> Try Again </button>
         </div>
     </div>
 
@@ -240,14 +240,30 @@
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
     </script>
 
-    <script src="assets\quizquestions.js"></script>
     <script src="script/const.js"></script>
+    <script src="assets/quizquestions.js"></script>
     <script src="script/auth.js"></script>
     <script src="script/components/Spinner.js"></script>
     <script src="script/loader.js"></script>
     
     <script src="script/boostrap-ftns.js"></script>
     <script src="script/form-validate.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const token = isAuthenticated();
+
+            if(token){
+                const user = decodeUser(token);
+                const txtEmail = document.getElementById("userEmail");
+                txtEmail.value = user.email;
+                txtEmail.setAttribute("disabled", true);
+                txtEmail.classList.add('bg-secondary');
+                txtEmail.classList.add('bg-opacity-25');
+            }
+        });
+    </script>
 </body>
 
 </html>
