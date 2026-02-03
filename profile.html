@@ -113,7 +113,7 @@
                         <div class="score-metrics">
                             <div class="metric">
                                 <p class="metric-label">Your Score</p>
-                                <p class="metric-value" id="userScore">150</p>
+                                <p class="metric-value" id="userScore"> - </p>
                             </div>
                         </div>
                     </div>
@@ -163,21 +163,8 @@
                 <div class="achievement-list">
                     <div class="achievement-item">
                         <span class="achievement-check">✓</span>
-                        <span class="achievement-text">Highest score of the campaign</span>
+                        <span class="achievement-text">Highest score by the end of the campaign</span>
                     </div>
-                    <div class="achievement-item">
-                        <span class="achievement-check">✓</span>
-                        <span class="achievement-text">Consistent top 3 placement throughout</span>
-                    </div>
-                    <div class="achievement-item">
-                        <span class="achievement-check">✓</span>
-                        <span class="achievement-text">Unlocked all bonus challenges</span>
-                    </div>
-                    <div class="achievement-item">
-                        <span class="achievement-check">✓</span>
-                        <span class="achievement-text">Featured on leaderboard 28+ days</span>
-                    </div>
-
                     <div class="reward-status">
                         <p class="reward-status-text">
                             <span class="reward-status-label">Reward Status:</span>
@@ -189,13 +176,13 @@
                 <!-- REDEEM SECTION -->
                 <div class="redeem-section">
                     <div class="redeem-item-preview">
-                        <img id="redemptionImage" src="https://via.placeholder.com/300x300?text=Redemption+Item"
-                            alt="Redemption Item">
+                        <img id="redemptionImage" src="assets\images\vouchers.jpg" alt="Redemption Item">
                     </div>
-                    <button id="redeemButton" class="redeem-button redeem-button--locked" disabled>
+                    <button id="redeemButton1" class="redeem-button redeem-button--locked" disabled>
                         <span class="lock-icon">🔒</span>
-                        <span>Available After Campaign Ends</span>
+                        <span>Available After Campaign Ends, 31 Jan 2026</span>
                     </button>
+                    <p id="RedemptionUpdate">Redemption Process Update: </p>
                 </div>
             </div>
         </div>
@@ -266,63 +253,11 @@
 
     <!-- Redeem Button Logic -->
     <script>
-        // Redeem Button Logic
-        const redeemButton = document.getElementById('redeemButton');
-        const redemptionImage = document.getElementById('redemptionImage');
-
-        // Check if campaign has ended
-        function checkCampaignStatus() {
-            const campaignEndDate = new Date('2026-02-31').getTime();
-            const currentDate = new Date().getTime();
-
-            if (currentDate >= campaignEndDate) {
-                // Unlock button
-                redeemButton.classList.remove('redeem-button--locked');
-                redeemButton.classList.add('redeem-button--unlocked');
-                redeemButton.disabled = false;
-                redeemButton.innerHTML = '<span class="lock-icon">🎁</span><span>Redeem Now</span>';
-            }
-        }
-
-        // // Change image dynamically
-        // function setRedemptionImage(imageUrl) {
-        //     redemptionImage.src = imageUrl;
-        // }
-
-        // Redeem button click handler
-        // redeemButton.addEventListener('click', function () {
-        //     if (!redeemButton.disabled) {
-        //         alert('Thank you for redeeming! Your reward has been processed.');
-        //         // Add your redemption logic here
-        //         const formData = new FormData();
-
-        //         formData.append("email", email);
-        //         formData.append("voucher", voucherId);
-
-        //         try {
-        //             const response = await fetch(, {
-        //                 method: 'GET',
-        //                 body: formData
-        //             });
-
-        //             if (response.ok) {
-        //                 const userResult = await response.json();
-        //                 document.getElementById('scoreUpdate').innerText = userResult.message;
-        //             }
-        //         } catch (error) {
-        //             console.log(error);
-        //             document.getElementById('scoreUpdate').textContent = 'An error occured updating the score. Try again later.';
-        //         }
-        //     }
-        // });
-
-        // Initialize on page load
-        checkCampaignStatus();
+        //get leaderboard
         function maskEmail(email) {
             // Replaces the 4 characters before the @ with ****
             return email.replace(/(.{3})@/, '***@');
         }
-        //get leaderboard
         async function printHighscore() {      // update the leaderboard with the new scores
 
             let leaderboardtableId = document.querySelectorAll('.tableid');
@@ -335,8 +270,7 @@
                 });
 
                 if (response.ok) {
-                    const top5 = await response.json();
-
+                    top5 = await response.json();
                     const sortedTop5 = Object.fromEntries(Object.entries(top5).sort(([, a], [, b]) => b - a)); // Use 'b - a' for descending
                     Object.entries(sortedTop5).forEach(([email, score], index) => {
                         leaderboardtableId[index].textContent = index + 1;
@@ -345,10 +279,13 @@
                     });
                 }
             } catch (error) {
+                console.log(error);
                 alert("An error occured");
             }
         }
-
+        // get personal score & userId
+        let top5;
+        let userDto;
         async function getUserInfo() {
 
             const users = decodeUser(localStorage.getItem(_USERTOKEN));
@@ -357,27 +294,74 @@
                     method: 'GET',
 
                 });
-
                 if (response.ok) {
-                    const userDto = await response.json();
-                    console.log(userDto);
+                    userDto = await response.json();
                     document.getElementById("userIdcard").textContent = `Your USERID : ${userDto.userid}`;
                     userDto.score > 0 ?
                         document.getElementById("userScore").textContent = ` Current HighScore : ${userDto.score}` :
                         document.getElementById("userScore").textContent = `You have not Attempted the game.`;
-
                 }
-
             } catch (error) {
                 alert("An error occured");
             }
         }
-        printHighscore();
-        getUserInfo();
+        function UserIsTop5() {
+            console.log(top5);
+            return top5.some(score => score.userid === top5.userid)
+        };
+        //Redeem button click handler
+        document.getElementById('redeemButton1').addEventListener('click', function () {
+            let voucherId = 1;
+            checkCampaignStatus(redeemButton1);
+            submitRedemption(userDto.userid, voucherId);
+        });
 
-        // Optional: Update every minute to check campaign status
-        setInterval(checkCampaignStatus, 60000);
-        // get personal score
+        // Submit redemption Request
+        async function submitRedemption(userId, voucherId) {
+            if (UserIsTop5) {
+                const data = {
+                    userId: userId,
+                    voucher: voucherId
+                };
+                try {
+                    const response = await fetch(`${_ENDPOINT_USERREDEEM}`, {
+                        method: 'POST',
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (response.ok) {
+                        const userResult = await response.json();
+                        document.getElementById('RedemptionUpdate').innerText = userResult.message;
+                    }
+                } catch (error) {
+                    console.log(error);
+                    document.getElementById('RedemptionUpdate').textContent = 'An error occured updating the score. Try again later.';
+                }
+            }
+            alert("Unfortunately your score is not in Top5")
+        }
+        // Check if campaign has ended
+        function checkCampaignStatus() {
+            const redeemBtn = document.getElementById('redeemButton1');
+            const campaignEndDate = new Date('2026-01-31').getTime();
+            const currentDate = new Date().getTime();
+
+            if (currentDate >= campaignEndDate && UserIsTop5()) {
+                // Unlock button
+                redeemBtn.classList.remove('redeem-button--locked');
+                redeemBtn.classList.add('redeem-button--unlocked');
+                redeemBtn.disabled = false;
+                redeemBtn.innerHTML = '<span class="lock-icon">🎁</span><span>Redeem Now</span>';
+            }
+        }
+
+        async function init() {
+            await Promise.all([printHighscore(), getUserInfo()]);
+            checkCampaignStatus();
+        }
 
     </script>
 </body>

@@ -884,3 +884,234 @@ footer {
   background-color: rgba(155, 155, 155, 0.1) !important;
 
 }
+
+/* =====================================================
+   StayAhead – profile
+   Add:
+   - Leaderboard layout
+   - Score card
+   - Top 5 list
+   - Redemption & locked/unlocked states
+   ===================================================== */
+ 
+/* ---------- Variables (safe additions) ---------- */
+:root {
+  --primary-blue: #1f4fd8;
+  --accent-green: #1bbf83;
+  --light-bg: #f6f8fc;
+  --card-bg: #ffffff;
+  --text-dark: #1f2937;
+  --text-muted: #6b7280;
+  --border-light: #e5e7eb;
+  --radius-lg: 16px;
+  --radius-md: 12px;
+  --shadow-soft: 0 10px 30px rgba(0, 0, 0, 0.06);
+}
+ 
+/* ---------- Leaderboard Container ---------- */
+.leaderboard-container {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 32px 16px 64px;
+}
+ 
+.left-column {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+ 
+/* ---------- Shared Card Style ---------- */
+.leaderboard-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-soft);
+  padding: 28px;
+}
+ 
+/* ---------- Titles ---------- */
+.card-title,
+.achievement-card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 4px;
+}
+ 
+.card-subtitle {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+}
+ 
+.section-label {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+ 
+/* ---------- Score Box ---------- */
+.score-box {
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  text-align: center;
+}
+ 
+.score-badge {
+  display: inline-block;
+  background: var(--primary-blue);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+ 
+.score-username {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+ 
+.score-subtitle {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+ 
+.score-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+ 
+.metric {
+  background: var(--light-bg);
+  border-radius: var(--radius-md);
+  padding: 16px;
+}
+ 
+.metric-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+ 
+.metric-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+ 
+/* ---------- Top 5 Section ---------- */
+.top-5-title {
+  font-weight: 700;
+  margin-bottom: 16px;
+  color: var(--text-dark);
+}
+ 
+.top-5-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+ 
+.leaderboard-item {
+  display: grid;
+  grid-template-columns: 32px 1fr auto;
+  align-items: center;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  background: var(--light-bg);
+}
+ 
+.tableid {
+  font-weight: 700;
+}
+ 
+.leaderid {
+  font-weight: 600;
+}
+ 
+.leaderscore {
+  font-weight: 700;
+}
+ 
+/* ---------- Achievements ---------- */
+.achievement-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+ 
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.95rem;
+}
+ 
+.achievement-check {
+  color: var(--accent-green);
+  font-weight: 700;
+}
+ 
+.reward-status {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
+}
+ 
+.reward-status-label {
+  font-weight: 700;
+}
+ 
+.reward-status-text {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+ 
+/* ---------- Redemption ---------- */
+.redeem-section {
+  margin-top: 24px;
+  text-align: center;
+}
+ 
+.redeem-item-preview img {
+  max-width: 100%;
+  border-radius: var(--radius-md);
+  margin-bottom: 16px;
+}
+ 
+.redeem-button {
+  width: 100%;
+  padding: 14px 16px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 999px;
+  border: none;
+}
+ 
+.redeem-button--locked {
+  background: #e5e7eb;
+  color: #9ca3af;
+  cursor: not-allowed;
+}
+ 
+.redeem-button--unlocked {
+  background: var(--primary-blue);
+  color: #fff;
+  cursor: pointer;
+}
+ 
+/* ---------- Responsive ---------- */
+@media (max-width: 992px) {
+  .leaderboard-container {
+    grid-template-columns: 1fr;
+  }
+}
