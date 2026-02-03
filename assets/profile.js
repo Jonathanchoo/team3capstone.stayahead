@@ -7,3 +7,7 @@ if (!isLoggedIn) {
 }
 
 document.getElementById("profile-username").textContent = username; // to be confirmed id of elemen
+
+document.getElementById("profileNameContainer").addEventListener('click', function(){
+    window.location.href = "/profile.html";
+})

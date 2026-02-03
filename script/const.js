@@ -20,5 +20,6 @@ const _ENDPOINT_PROFILE = _HOST + _PORT + "/stayahead/user/profile";
 const _ENDPOINT_UPDATEPROFILE = _HOST + _PORT + "/stayahead/user/update";
 const _ENDPOINT_UPDATE_HIGHSCORE = _HOST + _PORT + "/stayahead/user/score";
 const _ENDPOINT_TOPFIVE = _HOST + _PORT + "/stayahead/public/top5";
+const _ENDPOINT_USERINFOR = _HOST + _PORT + "/stayahead/user/email";
 
  

@@ -48,12 +48,15 @@
                 </div>
                 <!-- Profile Container -->
                 <div id="profileContainer" class="text-center pe-4">
-                    <div class="bg-secondary-subtle rounded-circle d-inline-flex align-items-center justify-content-center" style="width: 25px; height: 25px;">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray" class="bi bi-person-fill" viewBox="0 0 16 16">
-                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                    <div class="bg-secondary-subtle rounded-circle d-inline-flex align-items-center justify-content-center"
+                        style="width: 25px; height: 25px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="gray"
+                            class="bi bi-person-fill" viewBox="0 0 16 16">
+                            <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" />
                         </svg>
                     </div>
-                    <p id="profileNameContainer" class="mb-0 fw-lighter pt-1 text-white" style="font-size: 0.8rem;">Welcome User</p>
+                    <p id="profileNameContainer" class="mb-0 fw-lighter pt-1 text-white" style="font-size: 0.8rem;">
+                        Welcome User</p>
                 </div>
             </div>
         </nav>
@@ -74,11 +77,13 @@
                 </div>
                 <div class="navbar-collapse collapse" id="navbarsExample01">
                     <ul class="navbar-nav me-auto mb-2 ">
-                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a> </li>
+                        <li class="nav-item"> <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+                        </li>
                         <li class="nav-item"> <a class="nav-link" href="about.html">About</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="scamalerts.html">Scam Alerts</a> </li>
                         <li class="nav-item"> <a class="nav-link" href="game.html">Game</a> </li>
-                        <li class="nav-item"> <a class="nav-link" id="m_loginLink" href="signuplogin.html">Signup/Login</a> </li>
+                        <li class="nav-item"> <a class="nav-link" id="m_loginLink"
+                                href="signuplogin.html">Signup/Login</a> </li>
                         <li class="nav-item"> <a class="nav-link" id="m_logoutLink" href="#">Logout</a> </li>
                     </ul>
                 </div>
@@ -92,9 +97,9 @@
             <div class="left-column">
                 <!-- YOUR SCORE CARD (CENTERED) -->
                 <div class="leaderboard-card">
-                    <h1 class="card-title">
+                    <h1 class="card-title" id="userIdcard">
                         <span class="icon"></span>
-                        Your Score
+                        USERID :
                     </h1>
                     <p class="card-subtitle">Campaign Period: Jan 1 - Jan 31, 2026</p>
 
@@ -108,11 +113,7 @@
                         <div class="score-metrics">
                             <div class="metric">
                                 <p class="metric-label">Your Score</p>
-                                <p class="metric-value">2,850</p>
-                            </div>
-                            <div class="metric">
-                                <p class="metric-label">Your Rank</p>
-                                <p class="metric-value">#5</p>
+                                <p class="metric-value" id="userScore">150</p>
                             </div>
                         </div>
                     </div>
@@ -124,29 +125,29 @@
 
                     <div class="top-5-section">
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank">1</span>
-                            <span class="leaderboard-name">Alex Chen</span>
-                            <span class="leaderboard-score">3,950</span>
+                            <span class="tableid"></span>
+                            <span class="leaderid"></span>
+                            <span class="leaderscore"></span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank">2</span>
-                            <span class="leaderboard-name">Jordan Smith</span>
-                            <span class="leaderboard-score">3,720</span>
+                            <span class="tableid"></span>
+                            <span class="leaderid"> </span>
+                            <span class="leaderscore"></span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank">3</span>
-                            <span class="leaderboard-name">Morgan Lee</span>
-                            <span class="leaderboard-score">3,560</span>
+                            <span class="tableid"></span>
+                            <span class="leaderid"></span>
+                            <span class="leaderscore"></span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank">4</span>
-                            <span class="leaderboard-name">Casey Johnson</span>
-                            <span class="leaderboard-score">2,920</span>
+                            <span class="tableid"></span>
+                            <span class="leaderid"></span>
+                            <span class="leaderscore"></span>
                         </div>
                         <div class="leaderboard-item">
-                            <span class="leaderboard-rank">5</span>
-                            <span class="leaderboard-name">Taylor Brown</span>
-                            <span class="leaderboard-score">2,850</span>
+                            <span class="tableid"></span>
+                            <span class="leaderid"> </span>
+                            <span class="leaderscore"></span>
                         </div>
                     </div>
                 </div>
@@ -258,9 +259,11 @@
     <script src="script/auth.js"></script>
     <script src="script/components/Spinner.js"></script>
     <script src="script/loader.js"></script>
-    
+
     <script src="script/boostrap-ftns.js"></script>
     <script src="script/form-validate.js"></script>
+
+
     <!-- Redeem Button Logic -->
     <script>
         // Redeem Button Logic
@@ -269,7 +272,7 @@
 
         // Check if campaign has ended
         function checkCampaignStatus() {
-            const campaignEndDate = new Date('2026-01-31').getTime();
+            const campaignEndDate = new Date('2026-02-31').getTime();
             const currentDate = new Date().getTime();
 
             if (currentDate >= campaignEndDate) {
@@ -281,24 +284,101 @@
             }
         }
 
-        // Change image dynamically
-        function setRedemptionImage(imageUrl) {
-            redemptionImage.src = imageUrl;
-        }
+        // // Change image dynamically
+        // function setRedemptionImage(imageUrl) {
+        //     redemptionImage.src = imageUrl;
+        // }
 
         // Redeem button click handler
-        redeemButton.addEventListener('click', function () {
-            if (!redeemButton.disabled) {
-                alert('Thank you for redeeming! Your reward has been processed.');
-                // Add your redemption logic here
-            }
-        });
+        // redeemButton.addEventListener('click', function () {
+        //     if (!redeemButton.disabled) {
+        //         alert('Thank you for redeeming! Your reward has been processed.');
+        //         // Add your redemption logic here
+        //         const formData = new FormData();
+
+        //         formData.append("email", email);
+        //         formData.append("voucher", voucherId);
+
+        //         try {
+        //             const response = await fetch(, {
+        //                 method: 'GET',
+        //                 body: formData
+        //             });
+
+        //             if (response.ok) {
+        //                 const userResult = await response.json();
+        //                 document.getElementById('scoreUpdate').innerText = userResult.message;
+        //             }
+        //         } catch (error) {
+        //             console.log(error);
+        //             document.getElementById('scoreUpdate').textContent = 'An error occured updating the score. Try again later.';
+        //         }
+        //     }
+        // });
 
         // Initialize on page load
         checkCampaignStatus();
+        function maskEmail(email) {
+            // Replaces the 4 characters before the @ with ****
+            return email.replace(/(.{3})@/, '***@');
+        }
+        //get leaderboard
+        async function printHighscore() {      // update the leaderboard with the new scores
+
+            let leaderboardtableId = document.querySelectorAll('.tableid');
+            let leaderboardId = document.querySelectorAll('.leaderid');
+            let leaderboardScore = document.querySelectorAll('.leaderscore');
+
+            try {
+                const response = await fetch(_ENDPOINT_TOPFIVE, {
+                    method: 'GET',
+                });
+
+                if (response.ok) {
+                    const top5 = await response.json();
+
+                    const sortedTop5 = Object.fromEntries(Object.entries(top5).sort(([, a], [, b]) => b - a)); // Use 'b - a' for descending
+                    Object.entries(sortedTop5).forEach(([email, score], index) => {
+                        leaderboardtableId[index].textContent = index + 1;
+                        leaderboardId[index].textContent = maskEmail(email);
+                        leaderboardScore[index].textContent = score;
+                    });
+                }
+            } catch (error) {
+                alert("An error occured");
+            }
+        }
+
+        async function getUserInfo() {
+
+            const users = decodeUser(localStorage.getItem(_USERTOKEN));
+            try {
+                const response = await fetch(`${_ENDPOINT_USERINFOR}?email=${users.email}`, {
+                    method: 'GET',
+
+                });
+
+                if (response.ok) {
+                    const userDto = await response.json();
+                    console.log(userDto);
+                    document.getElementById("userIdcard").textContent = `Your USERID : ${userDto.userid}`;
+                    userDto.score > 0 ?
+                        document.getElementById("userScore").textContent = ` Current HighScore : ${userDto.score}` :
+                        document.getElementById("userScore").textContent = `You have not Attempted the game.`;
+
+                }
+
+            } catch (error) {
+                alert("An error occured");
+            }
+        }
+        printHighscore();
+        getUserInfo();
 
         // Optional: Update every minute to check campaign status
         setInterval(checkCampaignStatus, 60000);
+        // get personal score
+
     </script>
 </body>
 

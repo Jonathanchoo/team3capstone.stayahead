@@ -172,3 +172,7 @@ async function updateProfile(formData = {}, file = null){
         return;
     }
 }
+
+document.getElementById("profileNameContainer").addEventListener('click', function(){
+    window.location.href = "/profile.html";
+})
